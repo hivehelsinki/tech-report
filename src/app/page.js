@@ -1,12 +1,10 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import Button from '../components/Button';
 
 export default function Home() {
   return (
-    <main>
+    <main className="p-2">
       <h1>Next.js + Tailwind CSS</h1>
+      <Button>component example</Button>
     </main>
   );
 }

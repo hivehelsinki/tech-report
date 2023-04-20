@@ -6,6 +6,14 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    colors: {
+      hyellow: '#FADE4B',
+      hblue: '#AAD2DD',
+      horange: '#DF7E2F',
+      hred: '#D43E41',
+      hgreen: '#8DBC86',
+      hdark: '#383838',
+    },
     extend: {},
   },
   plugins: [],

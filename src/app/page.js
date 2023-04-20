@@ -8,7 +8,11 @@ export default function Home() {
       <h1>Next.js + Tailwind CSS</h1>
       <Button>component example</Button>
       <Accordion></Accordion>
-      <Badge>badge example</Badge>
+      <div className="flex gap-3 flex-row">
+        <Badge />
+        <Badge variant="ongoing" />
+        <Badge variant="resolved" />
+      </div>
     </main>
   );
 }

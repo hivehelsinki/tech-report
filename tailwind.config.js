@@ -6,6 +6,17 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    extend: {
+      colors: {
+        hyellow: '#FADE4B',
+        hblue: '#AAD2DD',
+        horange: '#DF7E2F',
+        hred: '#D43E41',
+        hgreen: '#8DBC86',
+        hdark: '#383838',
+        hlight: '#D9D9D9',
+      },
+    },
     container: {
       center: true,
       padding: '2rem',
@@ -13,7 +24,6 @@ module.exports = {
         '2xl': '1400px',
       },
     },
-    extend: {},
   },
   plugins: [],
 };

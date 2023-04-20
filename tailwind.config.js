@@ -13,6 +13,7 @@ module.exports = {
       hred: '#D43E41',
       hgreen: '#8DBC86',
       hdark: '#383838',
+      hlight: '#D9D9D9',
     },
     extend: {},
   },

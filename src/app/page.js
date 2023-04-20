@@ -23,7 +23,31 @@ export default function Home() {
           </div>
         </div>
         <div className="basis-1/3">
-          <h3 className="font-bold text-xl mb-3">..</h3>
+          <h3 className="font-bold text-xl mb-3">Lorem</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
+            consequatur recusandae, possimus distinctio voluptas quos reiciendis
+            cum accusantium ab. Asperiores a excepturi corporis perferendis.
+            Ipsa beatae id fugiat nobis!
+          </p>
+        </div>
+        <div className="basis-1/3">
+          <h3 className="font-bold text-xl mb-3">Lorem</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
+            consequatur recusandae, possimus distinctio voluptas quos reiciendis
+            cum accusantium ab. Asperiores a excepturi corporis perferendis.
+            Ipsa beatae id fugiat nobis!
+          </p>
+        </div>
+        <div className="basis-1/3">
+          <h3 className="font-bold text-xl mb-3">Lorem</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
+            consequatur recusandae, possimus distinctio voluptas quos reiciendis
+            cum accusantium ab. Asperiores a excepturi corporis perferendis.
+            Ipsa beatae id fugiat nobis!
+          </p>
         </div>
       </div>
     </main>

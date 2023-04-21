@@ -26,10 +26,10 @@ const Navbar = () => {
                   sideOffset={8}
                   className="mr-6 flex-col justify-between space-y-5 border bg-white px-8 py-5 drop-shadow-xl md:hidden"
                 >
-                  <DropdownMenu.Item className="hover:cursor-pointer hover:underline hover:underline-offset-4">
+                  <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
                     Issues
                   </DropdownMenu.Item>
-                  <DropdownMenu.Item className="hover:cursor-pointer hover:underline hover:underline-offset-4">
+                  <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
                     Logout
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
@@ -48,7 +48,7 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="inline-flex items-center gap-3">
-              <div className="flex h-7 w-7 cursor-pointer items-center justify-around rounded-full bg-hgreen">
+              <div className="flex h-7 w-7 items-center justify-around rounded-full bg-hgreen">
                 A
               </div>
               <ExitIcon className="h-6 w-6 cursor-pointer" />

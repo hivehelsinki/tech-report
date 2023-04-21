@@ -1,5 +1,5 @@
 export default function Button({ children }) {
   return (
-    <button className="py-3 px-8 bg-hyellow text-hdark">{children}</button>
+    <button className="bg-hyellow px-8 py-3 text-hdark">{children}</button>
   );
 }

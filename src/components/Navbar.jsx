@@ -6,7 +6,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const Navbar = () => {
   return (
-    <div className="h-20 w-screen shadow-lg">
+    <div className="h-20 w-screen text-hdark shadow-lg">
       <div className="container">
         <div className="mt-auto flex items-center justify-between pt-7">
           <div className="inline-flex gap-3">

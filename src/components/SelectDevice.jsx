@@ -11,7 +11,7 @@ const SelectDevice = () => {
         id={device}
         key={device}
       >
-        <div className="flex h-9 w-9 items-center justify-center border">
+        <div className="flex h-8 w-8 items-center justify-center border">
           <RadioGroup.Indicator>
             <CheckIcon className="h-9 w-9 text-slate-400" />
           </RadioGroup.Indicator>
@@ -24,8 +24,8 @@ const SelectDevice = () => {
   });
   return (
     <>
-      <label className="font-semibold">Select a device</label>
-      <RadioGroup.Root className="mt-4 flex flex-col space-y-4">
+      <label className="font-semibold text-hdark">Select a device</label>
+      <RadioGroup.Root className="mt-5 flex flex-col space-y-4">
         {devices}
       </RadioGroup.Root>
     </>

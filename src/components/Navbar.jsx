@@ -30,6 +30,11 @@ const Navbar = () => {
                   <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
                     Issues
                   </DropdownMenu.Item>
+                  {process.env.NODE_ENV !== 'production' && (
+                    <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
+                      Components
+                    </DropdownMenu.Item>
+                  )}
                   <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
                     Logout
                   </DropdownMenu.Item>
@@ -47,6 +52,16 @@ const Navbar = () => {
                   Issues
                 </Link>
               </li>
+              {process.env.NODE_ENV !== 'production' && (
+                <li>
+                  <Link
+                    href="/dev"
+                    className="cursor-pointer underline underline-offset-4"
+                  >
+                    Components
+                  </Link>
+                </li>
+              )}
             </ul>
             <div className="inline-flex items-center gap-3">
               <div className="flex h-7 w-7 items-center justify-around rounded-full bg-hgreen">

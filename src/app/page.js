@@ -1,15 +1,15 @@
 import Button from '../components/Button';
 import Badge from '../components/Badge';
 import ReportForm from '../components/ReportForm';
+import { Progress } from '../components/ui/progress';
 
 export default function Home() {
   return (
     <main className="p-2">
       <h1>Next.js + Tailwind CSS</h1>
-
       <h2 className="my-5 text-2xl font-bold">Components</h2>
 
-      <div id="wrapper" className="flex flex-wrap">
+      {/* <div id="wrapper" className="flex flex-wrap">
         <div className="basis-1/3">
           <h3 className="mb-3 text-xl font-bold">Buttons</h3>
           <Button>component example</Button>
@@ -23,7 +23,7 @@ export default function Home() {
             <Badge variant="resolved" />
           </div>
         </div>
-        <div className="basis-1/3">
+         <div className="basis-1/3">
           <h3 className="mb-3 text-xl font-bold">Lorem</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
@@ -50,7 +50,7 @@ export default function Home() {
             Ipsa beatae id fugiat nobis!
           </p>
         </div>
-      </div>
+      </div> */}
       <ReportForm />
     </main>
   );

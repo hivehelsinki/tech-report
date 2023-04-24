@@ -210,9 +210,9 @@ const SelectHost = () => {
     );
   });
   return (
-    <div className="mt-7">
-      <label className="font-semibold text-hdark">Select Host</label>
-      <div className="flex flex-col md:flex-row-reverse md:justify-end">
+    <div className="mt-5 md:mt-10">
+      <label className="font-bold">Hostname</label>
+      <div className="mt-4 flex flex-col pl-5 md:flex-row-reverse md:justify-end">
         <p className="py-2 md:ml-12">
           Are you connected on
           <span
@@ -224,12 +224,13 @@ const SelectHost = () => {
           </span>
           ?
         </p>
-        <Command className="rounded-none border md:w-1/3">
+        <Command className="rounded-none border md:w-2/5">
           <CommandInput
             placeholder="Type a host or search..."
             value={hostValue}
           />
-          <CommandList>
+          {/* set to hidden for now */}
+          <CommandList className="hidden">
             <CommandEmpty>No results found.</CommandEmpty>
             {hosts}
           </CommandList>

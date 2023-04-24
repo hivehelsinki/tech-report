@@ -24,8 +24,8 @@ const SelectDevice = () => {
   });
   return (
     <>
-      <label className="font-semibold text-hdark">Select a device</label>
-      <RadioGroup.Root className="mt-5 flex flex-col space-y-4">
+      <label className="font-bold">Faulty device</label>
+      <RadioGroup.Root className="mt-5 flex flex-col space-y-4 pl-5">
         {devices}
       </RadioGroup.Root>
     </>

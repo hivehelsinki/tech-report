@@ -1,19 +1,20 @@
 'use client';
+
 import Image from 'next/image';
+import Link from 'next/link';
 import logo from '../../public/logo.svg';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav className="h-20 w-full text-hdark shadow-lg">
+    <header className="h-16 w-full text-hdark shadow">
       <div className="container h-full">
-        <div className="flex h-full items-center justify-between">
+        <nav className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center justify-between">
-            <div className="inline-flex cursor-pointer gap-3">
-              <Image src={logo} alt="school logo" className="w-6" />
-              <p className="bold text-xl font-bold">Karen</p>
+            <div className="inline-flex cursor-pointer gap-2">
+              <Image src={logo} alt="school logo" width={28} height={28} />
+              <span className="bold text-xl font-bold">Karen</span>
             </div>
           </Link>
           <div className="md:hidden">
@@ -39,12 +40,12 @@ const Navbar = () => {
           <div className="hidden md:inline-flex md:items-center md:gap-20">
             <ul className="inline-flex gap-9">
               <li>
-                <a
+                <Link
                   href="#"
                   className="cursor-pointer underline underline-offset-4"
                 >
                   Issues
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="inline-flex items-center gap-3">
@@ -54,9 +55,9 @@ const Navbar = () => {
               <ExitIcon className="h-6 w-6 cursor-pointer" />
             </div>
           </div>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 

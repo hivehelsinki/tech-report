@@ -1,5 +1,6 @@
 import Button from '../components/Button';
 import Badge from '../components/Badge';
+import ReportForm from '../components/ReportForm';
 
 export default function Home() {
   return (
@@ -50,6 +51,7 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <ReportForm />
     </main>
   );
 }

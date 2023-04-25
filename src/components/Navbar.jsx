@@ -28,10 +28,17 @@ const Navbar = () => {
                   className="mr-6 flex-col justify-between space-y-5 border bg-white px-8 py-5 drop-shadow-xl md:hidden"
                 >
                   <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
-                    Issues
+                    <Link href="#">Issues</Link>
                   </DropdownMenu.Item>
-                  <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
-                    Logout
+                  {process.env.NODE_ENV !== 'production' && (
+                    <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
+                      <Link href="#">Components</Link>
+                    </DropdownMenu.Item>
+                  )}
+                  <DropdownMenu.Item className="outline-none hover:cursor-pointer ">
+                    <button className="border-none hover:underline hover:underline-offset-4">
+                      Logout
+                    </button>
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
               </DropdownMenu.Portal>
@@ -47,12 +54,24 @@ const Navbar = () => {
                   Issues
                 </Link>
               </li>
+              {process.env.NODE_ENV !== 'production' && (
+                <li>
+                  <Link
+                    href="/dev"
+                    className="cursor-pointer underline underline-offset-4"
+                  >
+                    Components
+                  </Link>
+                </li>
+              )}
             </ul>
             <div className="inline-flex items-center gap-3">
               <div className="flex h-7 w-7 items-center justify-around rounded-full bg-hgreen">
                 A
               </div>
-              <ExitIcon className="h-6 w-6 cursor-pointer" />
+              <button>
+                <ExitIcon className="h-6 w-6 cursor-pointer" />
+              </button>
             </div>
           </div>
         </nav>

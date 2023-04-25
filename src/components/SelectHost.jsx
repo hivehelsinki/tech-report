@@ -205,12 +205,7 @@ const SelectHost = () => {
     'c3r5p6',
   ].map((host, i) => {
     return (
-      <CommandItem
-        onClick={() => console.log('lllll')}
-        className="cursor-pointer"
-        key={i}
-        value={host}
-      >
+      <CommandItem className="cursor-pointer" key={i} value={host}>
         {host}
       </CommandItem>
     );

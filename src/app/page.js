@@ -19,33 +19,6 @@ export default function Home() {
             <Badge variant="resolved" />
           </div>
         </div>
-         <div className="basis-1/3">
-          <h3 className="mb-3 text-xl font-bold">Lorem</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
-            consequatur recusandae, possimus distinctio voluptas quos reiciendis
-            cum accusantium ab. Asperiores a excepturi corporis perferendis.
-            Ipsa beatae id fugiat nobis!
-          </p>
-        </div>
-        <div className="basis-1/3">
-          <h3 className="mb-3 text-xl font-bold">Lorem</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
-            consequatur recusandae, possimus distinctio voluptas quos reiciendis
-            cum accusantium ab. Asperiores a excepturi corporis perferendis.
-            Ipsa beatae id fugiat nobis!
-          </p>
-        </div>
-        <div className="basis-1/3">
-          <h3 className="mb-3 text-xl font-bold">Lorem</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
-            consequatur recusandae, possimus distinctio voluptas quos reiciendis
-            cum accusantium ab. Asperiores a excepturi corporis perferendis.
-            Ipsa beatae id fugiat nobis!
-          </p>
-        </div>
       </div> */}
       <ReportForm />
     </main>

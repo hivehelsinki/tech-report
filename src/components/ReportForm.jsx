@@ -10,8 +10,8 @@ const ReportForm = () => {
       <SelectDevice />
       <SelectHost />
       <Description />
-      <div className="mt-5 flex justify-center md:mt-10 md:justify-start md:pl-5">
-        <Button className="">Submit</Button>
+      <div className="mt-8 flex justify-center md:mt-14 md:justify-start md:pl-5">
+        <Button>Submit</Button>
       </div>
     </form>
   );

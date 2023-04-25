@@ -32,7 +32,7 @@ const Navbar = () => {
                   </DropdownMenu.Item>
                   {process.env.NODE_ENV !== 'production' && (
                     <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
-                      <Link href="#">Components</Link>
+                      <Link href="/dev">Components</Link>
                     </DropdownMenu.Item>
                   )}
                   <DropdownMenu.Item className="outline-none hover:cursor-pointer ">

@@ -11,9 +11,9 @@ const SelectDevice = () => {
         id={device}
         key={device}
       >
-        <div className="flex h-6 w-6 items-center justify-center border border-slate-400">
+        <div className="flex h-6 w-6 items-center justify-center rounded-full border border-slate-400">
           <RadioGroup.Indicator>
-            <CheckIcon className="h-6 w-6 text-slate-600" />
+            <div className="h-4 w-4 rounded-full bg-hyellow " />
           </RadioGroup.Indicator>
         </div>
         <label className="pl-4" htmlFor="r1">
@@ -22,6 +22,7 @@ const SelectDevice = () => {
       </RadioGroup.Item>
     );
   });
+
   return (
     <>
       <label className="font-bold">Faulty device</label>

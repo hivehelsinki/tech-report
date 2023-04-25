@@ -14,7 +14,7 @@ const Description = () => {
         </p>
         <textarea
           rows={5}
-          className="border border-b-2 px-4 py-3 text-sm outline-none md:w-2/5"
+          className="border border-b-2 px-4 py-3 outline-none md:w-2/5"
         />
       </div>
     </div>

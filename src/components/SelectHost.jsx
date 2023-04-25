@@ -206,7 +206,7 @@ const SelectHost = () => {
     'c3r5p6',
   ].map((host, i) => {
     return (
-      <CommandItem className="cursor-pointer" key={i} value={host}>
+      <CommandItem className="cursor-pointer text-base" key={i} value={host}>
         {host}
       </CommandItem>
     );
@@ -236,6 +236,7 @@ const SelectHost = () => {
             value={hostValue}
             onFocus={() => setOpen(true)}
             onValueChange={(value) => handleHostChange(value, 'key')}
+            className="text-base"
           />
           <CommandList
             className={!open && 'hidden'}

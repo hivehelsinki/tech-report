@@ -13,7 +13,8 @@ import {
 import { useState } from 'react';
 
 const SelectHost = () => {
-  const [hostValue, setHostValue] = useState();
+  const [hostValue, setHostValue] = useState('');
+  const [open, setOpen] = useState(false);
   const hosts = [
     'c1r1p1',
     'c1r1p2',
@@ -204,11 +205,20 @@ const SelectHost = () => {
     'c3r5p6',
   ].map((host, i) => {
     return (
-      <CommandItem className="cursor-pointer" key={i}>
+      <CommandItem
+        onClick={() => console.log('lllll')}
+        className="cursor-pointer"
+        key={i}
+        value={host}
+      >
         {host}
       </CommandItem>
     );
   });
+  const handleValueCahnge = (value, source) => {
+    setHostValue(value);
+    if (source !== 'key') setOpen(false);
+  };
   return (
     <div className="mt-5 md:mt-10">
       <label className="font-bold">Hostname</label>
@@ -217,7 +227,7 @@ const SelectHost = () => {
           Are you connected on
           <span
             className="cursor-pointer underline underline-offset-4"
-            onClick={() => setHostValue('c2r2p12')}
+            onClick={() => handleValueCahnge('c2r2p12')}
           >
             {' '}
             c2r2p12
@@ -228,9 +238,15 @@ const SelectHost = () => {
           <CommandInput
             placeholder="Type a host or search..."
             value={hostValue}
+            onFocus={() => setOpen(true)}
+            onValueChange={(value) => handleValueCahnge(value, 'key')}
           />
-          {/* set to hidden for now */}
-          <CommandList className="hidden">
+          <CommandList
+            className={!open && 'hidden'}
+            onClick={(event) =>
+              handleValueCahnge(event.target.getAttribute('data-value'))
+            }
+          >
             <CommandEmpty>No results found.</CommandEmpty>
             {hosts}
           </CommandList>

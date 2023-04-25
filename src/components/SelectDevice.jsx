@@ -11,9 +11,9 @@ const SelectDevice = () => {
         id={device}
         key={device}
       >
-        <div className="flex h-8 w-8 items-center justify-center border">
+        <div className="flex h-6 w-6 items-center justify-center border border-slate-400">
           <RadioGroup.Indicator>
-            <CheckIcon className="h-9 w-9 text-slate-400" />
+            <CheckIcon className="h-6 w-6 text-slate-600" />
           </RadioGroup.Indicator>
         </div>
         <label className="pl-4" htmlFor="r1">

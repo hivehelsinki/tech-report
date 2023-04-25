@@ -12,6 +12,7 @@ import {
 } from './ui/command.jsx';
 import { useState } from 'react';
 
+// TODO: add logic when pressing enter to select host
 const SelectHost = () => {
   const [hostValue, setHostValue] = useState('');
   const [open, setOpen] = useState(false);
@@ -210,7 +211,7 @@ const SelectHost = () => {
       </CommandItem>
     );
   });
-  const handleValueCahnge = (value, source) => {
+  const handleHostChange = (value, source) => {
     setHostValue(value);
     if (source !== 'key') setOpen(false);
   };
@@ -222,7 +223,7 @@ const SelectHost = () => {
           Are you connected on
           <span
             className="cursor-pointer underline underline-offset-4"
-            onClick={() => handleValueCahnge('c2r2p12')}
+            onClick={() => handleHostChange('c2r2p12')}
           >
             {' '}
             c2r2p12
@@ -234,12 +235,12 @@ const SelectHost = () => {
             placeholder="Type a host or search..."
             value={hostValue}
             onFocus={() => setOpen(true)}
-            onValueChange={(value) => handleValueCahnge(value, 'key')}
+            onValueChange={(value) => handleHostChange(value, 'key')}
           />
           <CommandList
             className={!open && 'hidden'}
             onClick={(event) =>
-              handleValueCahnge(event.target.getAttribute('data-value'))
+              handleHostChange(event.target.getAttribute('data-value'))
             }
           >
             <CommandEmpty>No results found.</CommandEmpty>

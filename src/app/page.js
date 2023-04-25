@@ -1,6 +1,9 @@
-import Button from '../components/Button';
-import Badge from '../components/Badge';
+import ReportForm from '../components/ReportForm';
 
 export default function Home() {
-  return <main className="p-2"></main>;
+  return (
+    <main className="p-2">
+      <ReportForm />
+    </main>
+  );
 }

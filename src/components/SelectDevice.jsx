@@ -3,7 +3,7 @@ import * as RadioGroup from '@radix-ui/react-radio-group';
 import { CheckIcon } from '@radix-ui/react-icons';
 
 const SelectDevice = () => {
-  const devices = ['iMac', 'Mouse', 'Keyboard'].map((device) => {
+  const devices = ['iMac', 'Mouse', 'Keyboard', 'Other'].map((device) => {
     return (
       <RadioGroup.Item
         className="inline-flex items-center"

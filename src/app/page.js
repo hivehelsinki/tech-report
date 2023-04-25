@@ -11,7 +11,7 @@ export default function Home() {
       <div id="wrapper" className="flex flex-wrap">
         <div className="basis-1/3">
           <h3 className="mb-3 text-xl font-bold">Buttons</h3>
-          <Button>component example</Button>
+          <Button>Sign in</Button>
         </div>
 
         <div className="basis-1/3">

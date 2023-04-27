@@ -5,14 +5,18 @@ import Link from 'next/link';
 import logo from '../../public/logo.svg';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import Avatar from './Avatar';
+import { signOut } from 'next-auth/react';
 
-const Navbar = () => {
+// TODO: accentuate the current position in navbar
+//const path = usePathname();
+const Navbar = ({ user }) => {
   return (
     <header className="h-16 w-full text-hdark shadow">
       <div className="container h-full">
         <nav className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center justify-between">
-            <div className="inline-flex cursor-pointer gap-2">
+            <div className="inline-flex cursor-pointer gap-2 ">
               <Image src={logo} alt="school logo" width={28} height={28} />
               <span className="bold text-xl font-bold">Karen</span>
             </div>
@@ -35,10 +39,16 @@ const Navbar = () => {
                       <Link href="/dev">Components</Link>
                     </DropdownMenu.Item>
                   )}
-                  <DropdownMenu.Item className="outline-none hover:cursor-pointer ">
-                    <button className="border-none hover:underline hover:underline-offset-4">
-                      Logout
-                    </button>
+                  <DropdownMenu.Item
+                    className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4"
+                    onSelect={(event) => {
+                      event.preventDefault();
+                      signOut({
+                        callbackUrl: `${window.location.origin}/login`,
+                      });
+                    }}
+                  >
+                    Logout
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
               </DropdownMenu.Portal>
@@ -66,10 +76,15 @@ const Navbar = () => {
               )}
             </ul>
             <div className="inline-flex items-center gap-3">
-              <div className="flex h-7 w-7 items-center justify-around rounded-full bg-hgreen">
-                A
-              </div>
-              <button>
+              <Avatar user={user} />
+              <button
+                onClick={(event) => {
+                  event.preventDefault();
+                  signOut({
+                    callbackUrl: `${window.location.origin}/login`,
+                  });
+                }}
+              >
                 <ExitIcon className="h-6 w-6 cursor-pointer" />
               </button>
             </div>

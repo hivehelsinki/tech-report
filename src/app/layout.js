@@ -8,12 +8,12 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getCurrentUser();
+  const user = await getCurrentUser();
 
   return (
     <html lang="en">
       <body>
-        {session && <Navbar />}
+        {user && <Navbar user={user} />}
         <div className="container">{children}</div>
       </body>
     </html>

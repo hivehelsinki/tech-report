@@ -36,7 +36,6 @@ export const authOptions = {
       session.user_id = token.user_id;
       session.image_url = token.image_url;
       session.admin = token.admin;
-
       return session;
     },
     callbacks: {

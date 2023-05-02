@@ -1,20 +1,12 @@
-import Image from 'next/image';
 const Avatar = ({ user }) => {
   return (
     <>
-      {user.image_url ? (
-        <Image
-          src={user.image_url}
-          alt="user_avatar"
-          width={28}
-          height={28}
-          className="rounded-full"
-        />
-      ) : (
-        <div className="flex h-7 w-7 items-center justify-around rounded-full bg-hgreen">
-          user.login[0]
-        </div>
-      )}
+      <div
+        className="flex h-7 w-7 items-center justify-around rounded-full bg-hgreen bg-cover bg-center"
+        style={user.image_url && { backgroundImage: `url(${user.image_url})` }}
+      >
+        {!user.image_url && `${user.login[0]}`}
+      </div>
     </>
   );
 };

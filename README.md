@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## SET UP 42 APP
+
+1. Go to "https://profile.intra.42.fr/oauth/applications" and click "REGISTER A NEW APP".
+2. In the field Redirect URI add: http://localhost:3000/api/auth/callback/42-school and http://localhost:3001/api/auth/callback/42-school. Each on its own line.
+3. In the scopes select "Access the user public data" and submit.
+
+Now the app will be registered and you will get a FT_UID and a FT_SECRET to add to your .env file.

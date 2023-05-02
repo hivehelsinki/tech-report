@@ -1,5 +1,4 @@
 const Avatar = ({ user }) => {
-  console.log(user);
   return (
     <>
       <div

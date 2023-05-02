@@ -1,6 +1,5 @@
 import Image from 'next/image';
 const Avatar = ({ user }) => {
-  console.log(user);
   return (
     <>
       {user.image_url ? (

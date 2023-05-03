@@ -11,18 +11,18 @@ generator client {
 }
 
 model User {
-  id Int @id
+  id Int @id @unique
   login String @unique
   admin Boolean @default(false)
   issues Issue[]
 }
 
 model Issue {
-  id Int @id
+  id Int @id @unique @default(autoincrement())
   host String
   device String
   description String
-  status String
+  status String @default("open")
   created DateTime @default(now())
   closed DateTime?
   user User @relation(fields: [userId], references: [id])

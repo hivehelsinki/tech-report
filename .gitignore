@@ -37,3 +37,7 @@ next-env.d.ts
 # config
 config.yml
 .env
+
+# database
+/prisma/dev.db
+/prisma/dev.db-journal

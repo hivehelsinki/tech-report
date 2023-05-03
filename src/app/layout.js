@@ -14,7 +14,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         {user && <Navbar user={user} />}
-        <div className="container">{children}</div>
+        <div>{children}</div>
       </body>
     </html>
   );

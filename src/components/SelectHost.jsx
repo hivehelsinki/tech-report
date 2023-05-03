@@ -217,8 +217,8 @@ const SelectHost = () => {
   };
   return (
     <div className="mt-5 md:mt-10">
-      <label className="font-bold">Hostname</label>
-      <div className="mt-4 flex flex-col pl-5 md:flex-row-reverse md:justify-end">
+      <label className="text-xl font-bold">Hostname</label>
+      <div className="mt-4 flex flex-col md:flex-row-reverse md:justify-end md:pl-5">
         <p className="py-2 md:ml-12">
           Are you connected on
           <span

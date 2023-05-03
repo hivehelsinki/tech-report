@@ -32,7 +32,7 @@ const Navbar = ({ user }) => {
                   className="mr-6 flex-col justify-between space-y-5 border bg-white px-8 py-5 drop-shadow-xl md:hidden"
                 >
                   <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
-                    <Link href="#">Issues</Link>
+                    <Link href="/issues">Issues</Link>
                   </DropdownMenu.Item>
                   {process.env.NODE_ENV !== 'production' && (
                     <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
@@ -58,7 +58,7 @@ const Navbar = ({ user }) => {
             <ul className="inline-flex gap-9">
               <li>
                 <Link
-                  href="#"
+                  href="/issues"
                   className="cursor-pointer underline underline-offset-4"
                 >
                   Issues

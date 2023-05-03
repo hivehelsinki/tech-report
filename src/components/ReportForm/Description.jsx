@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Description = () => {
   return (
     <div className="mt-5 md:mt-10">

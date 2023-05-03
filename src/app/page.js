@@ -1,5 +1,5 @@
 import { getCurrentUser } from '@/lib/session';
-import ReportForm from '../components/ReportForm';
+import ReportForm from '../components/ReportForm/ReportForm';
 import { redirect } from 'next/navigation';
 
 export default async function Home() {

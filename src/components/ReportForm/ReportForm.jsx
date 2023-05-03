@@ -2,7 +2,7 @@
 import SelectDevice from './SelectDevice';
 import SelectHost from './SelectHost';
 import Description from './Description';
-import Button from './Button';
+import Button from '../Button';
 
 const ReportForm = () => {
   return (

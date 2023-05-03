@@ -9,7 +9,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from './ui/command.jsx';
+} from '@components/ui/command.jsx';
 import { useState } from 'react';
 
 // TODO: add logic when pressing enter to select host

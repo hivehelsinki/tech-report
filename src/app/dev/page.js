@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Button from '@components/Button';
 import Badge from '@components/Badge';
-import SelectStatus from '@components/SelectStatus';
+import SelectStatus from '@/components/IssuesTable/SelectStatus';
 import {
   Popover,
   PopoverContent,

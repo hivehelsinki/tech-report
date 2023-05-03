@@ -1,6 +1,12 @@
 import { notFound } from 'next/navigation';
 import Button from '@components/Button';
 import Badge from '@components/Badge';
+import SelectStatus from '@components/SelectStatus';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@components/ui/popover';
 
 export default function Home() {
   if (process.env.NODE_ENV === 'production') {
@@ -17,6 +23,10 @@ export default function Home() {
         <div className="basis-full md:basis-1/2">
           <h3 className="mb-3 text-xl font-bold">Buttons</h3>
           <Button>component example</Button>
+        </div>
+        <div className="basis-full md:basis-1/2">
+          <h3 className="mb-3 text-xl font-bold">PopOver</h3>
+          <SelectStatus />
         </div>
 
         <div className="basis-full md:basis-1/2">

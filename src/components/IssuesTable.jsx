@@ -1,87 +1,116 @@
 'use client';
 import * as Accordion from '@radix-ui/react-accordion';
-import Badge from './Badge';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
+import SelectStatus from './SelectStatus';
+import * as Checkbox from '@radix-ui/react-checkbox';
+import { CheckIcon } from '@radix-ui/react-icons';
+import { useState, useEffect } from 'react';
+
+const RenderIssue = ({ issue, handleIssuesState }) => {
+  return (
+    <Accordion.Item key={issue.id} value={issue.id} className=" text-hdark">
+      <Accordion.Trigger className="group flex w-full items-center justify-between border-b px-5 py-4">
+        <div className="inline-flex w-2/5 items-center gap-8">
+          <p>{issue.host}</p> <p>{issue.device}</p>
+        </div>
+        <div className="inline-flex items-center gap-6">
+          <SelectStatus
+            status={issue.status}
+            handleIssuesState={handleIssuesState}
+            id={issue.id}
+          />
+          <ChevronDownIcon className="h-5 w-5 transition-transform duration-300 group-data-[state=open]:rotate-180" />
+        </div>
+      </Accordion.Trigger>
+      <Accordion.Content className="border-b bg-slate-50 px-5 py-6">
+        <div className=" md:pl-20">
+          <p className="text-sm ">
+            <span className="font-medium  ">{issue.student}:</span>{' '}
+            {issue.description}
+          </p>
+          <p className="mt-5 text-xs">{issue.created}</p>
+        </div>
+      </Accordion.Content>
+    </Accordion.Item>
+  );
+};
+
+const RenderIssues = ({ issues, handleIssuesState }) => {
+  console.log('rwender', issues);
+  if (issues.length > 0)
+    return issues.map((issue, i) => (
+      <RenderIssue
+        handleIssuesState={handleIssuesState}
+        issue={issue}
+        key={i}
+      />
+    ));
+};
 
 const IssuesTable = () => {
-  const issues = [
-    {
-      id: 4,
-      host: 'c1r4p3',
-      device: 'iMac',
-      description:
-        'A pop up on my mac says that CLI needs to be reinstalled when I try to install node.',
-      student: 'amajer',
-      status: 'open',
-      created: '12 minutes ago',
-      closed: null,
-    },
-    {
-      id: 3,
-      host: 'c2r6p3',
-      device: 'Mouse',
-      description: 'The mouse right button is not responding.',
-      student: 'titus',
-      status: 'resolved',
-      created: '48 minutes ago',
-      closed: 'closed 34 minutes ago',
-    },
-    {
-      id: 2,
-      host: 'c2r1p8',
-      device: 'iMac',
-      description: 'The computer is very slow.',
-      student: 'emilia',
-      status: 'open',
-      created: '1 hour ago',
-      closed: null,
-    },
-    {
-      id: 1,
-      host: 'c3r1p3',
-      device: 'iMac',
-      description: "My mac won't stop playing tu vo fa l'americano!!",
-      student: 'giovanni',
-      status: 'ongoing',
-      created: '2 days ago',
-      closed: '2 days ago',
-    },
-  ].map((issue) => {
+  const [checkedOpen, setCheckedOpen] = useState(true);
+  const [checkedResolved, setCheckedResolved] = useState(false);
+  const [issues, setIssues] = useState([]);
+
+  const handleIssuesState = (id, status) => {
+    const temp = issues.map((issue) => {
+      if (issue.id == id) issue.status = status;
+    });
+
+    setIssues(temp);
+    console.log(issues);
+  };
+
+  useEffect(() => {
+    const fetchInfo = async () => {
+      const data = await fetch('/api/issues');
+      const jsonData = await data.json();
+
+      setIssues(jsonData);
+    };
+    fetchInfo();
+  }, []);
+
+  if (issues.length > 0) {
     return (
-      <Accordion.Item key={issue.id} value={issue.id} className=" text-hdark">
-        <Accordion.Trigger className="flex w-full items-center justify-between border-b px-5 py-4">
-          <div className="inline-flex w-2/5 items-center gap-8">
-            <p>{issue.host}</p> <p>{issue.device}</p>
+      <div className="mt-11 w-full md:container">
+        <div className="mb-5 flex w-full flex-row justify-end gap-5">
+          <div className="flex items-center gap-2">
+            <Checkbox.Root
+              className="flex h-4 w-4 appearance-none items-center justify-center border border-slate-400 bg-white outline-none"
+              defaultChecked
+              id="c1"
+              onCheckedChange={(event) => setCheckedOpen(event)}
+            >
+              <Checkbox.Indicator>
+                <CheckIcon className="h-5 w-5" />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <label className="leading-none text-slate-600" htmlFor="c1">
+              Open/Ongoing
+            </label>
           </div>
-          <div className="inline-flex items-center gap-6">
-            <Badge variant={issue.status} />
-            <ChevronDownIcon className="h-7 w-7" />
+          <div className="flex items-center gap-2">
+            <Checkbox.Root
+              className="flex h-4 w-4 appearance-none items-center justify-center border border-slate-400 bg-white outline-none"
+              id="c2"
+              onCheckedChange={(event) => setCheckedResolved(event)}
+            >
+              <Checkbox.Indicator>
+                <CheckIcon className="h-5 w-5" />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <label className="leading-none text-slate-600" htmlFor="c2">
+              Resolved
+            </label>
           </div>
-        </Accordion.Trigger>
-        <Accordion.Content className="border-b bg-slate-50 px-5 py-6">
-          <div>
-            <p className="text-sm">
-              <span className="font-medium">{issue.student}:</span>{' '}
-              {issue.description}
-            </p>
-          </div>
-          <div className="inline-flex w-full items-center justify-between pt-4">
-            <p className="text-xs">{issue.created}</p>
-            <div className="space-x-6">
-              <Badge variant={'open'} />
-              <Badge variant={'ongoing'} />
-              <Badge variant={'resolved'} />
-            </div>
-          </div>
-        </Accordion.Content>
-      </Accordion.Item>
+        </div>
+        <Accordion.Root className="w-full border">
+          <RenderIssues handleIssuesState={handleIssuesState} issues={issues} />
+        </Accordion.Root>
+      </div>
     );
-  });
-  return (
-    <div className="mt-11 w-full">
-      <Accordion.Root className="m-0 w-full border">{issues}</Accordion.Root>
-    </div>
-  );
+  }
 };
 
 export default IssuesTable;

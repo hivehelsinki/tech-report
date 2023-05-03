@@ -9,7 +9,9 @@ export default async function Home() {
   // if (user.admin) redirect('/issues');
   return (
     <main className="p-2">
-      <ReportForm />
+      <div className="container lg:px-24">
+        <ReportForm />
+      </div>
     </main>
   );
 }

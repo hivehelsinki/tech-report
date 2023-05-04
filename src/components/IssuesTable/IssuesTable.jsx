@@ -21,6 +21,7 @@ const IssuesTable = ({ user }) => {
     const fetchInfo = async () => {
       const data = await fetch('/api/issues');
       const jsonData = await data.json();
+      console.log(jsonData);
 
       setIssues(jsonData);
     };

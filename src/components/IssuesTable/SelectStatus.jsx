@@ -14,8 +14,17 @@ const SelectStatus = ({ status, id, user }) => {
   const [open, setOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(status);
 
-  const handleStatusChange = (event, id) => {
+  const handleStatusChange = (event) => {
     if (possibleStatus.includes(event)) {
+      fetch(`/api/issues/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          status: event,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
       setSelectedStatus(event);
     }
   };
@@ -33,7 +42,7 @@ const SelectStatus = ({ status, id, user }) => {
             side="bottom"
             align="start"
             onClick={(event) =>
-              handleStatusChange(event.target.getAttribute('value'), id)
+              handleStatusChange(event.target.getAttribute('value'))
             }
           >
             <p

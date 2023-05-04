@@ -1,9 +1,18 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import SelectStatus from './SelectStatus';
 import { ChevronDownIcon } from 'lucide-react';
-
+import calculateIssueTime from '@/lib/calculateIssueTime';
+import { useEffect, useState } from 'react';
 const Issue = ({ props }) => {
+  const [reRender, setReRender] = useState(false);
   const { issue, user, checkedResolved } = props;
+  const time = calculateIssueTime(
+    new Date(issue.closed ?? issue.created),
+    issue.closed ? 'closed' : 'created'
+  );
+  useEffect(() => {
+    setReRender(!reRender);
+  }, [issue.status]);
 
   if (checkedResolved === false && issue.status === 'resolved') return null;
   return (
@@ -20,10 +29,10 @@ const Issue = ({ props }) => {
       <Accordion.Content className="border-b bg-slate-50 px-2 py-6">
         <div className="md:pl-20">
           <p className="text-sm ">
-            <span className="font-medium  ">{issue.student}:</span>{' '}
+            <span className="font-medium  ">{issue.user.login}:</span>{' '}
             {issue.description}
           </p>
-          <p className="mt-5 text-xs">{issue.created}</p>
+          <p className="mt-5 text-xs">{time}</p>
         </div>
       </Accordion.Content>
     </Accordion.Item>

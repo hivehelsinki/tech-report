@@ -24,7 +24,6 @@ export async function POST(request, response) {
       },
     });
     if (userExists) {
-      console.log('userExists');
       return new Response(
         JSON.stringify({ 'GET /users': 'User already exists' }),
         { status: 409 }
@@ -37,7 +36,6 @@ export async function POST(request, response) {
           admin: user.admin,
         },
       });
-      console.log('userCreation');
       return new Response(JSON.stringify({ 'GET /users': userCreation }), {
         status: 201,
       });

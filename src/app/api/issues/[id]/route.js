@@ -25,6 +25,7 @@ export async function PATCH(request, { params }) {
   if (user && user.admin) {
     try {
       const issue = await request.json();
+      console.log('issue :', `issue`);
 
       const issueUpdate = await prisma.Issue.update({
         where: {

@@ -3,8 +3,16 @@ import { getCurrentUser } from '@/lib/session';
 
 export async function GET() {
   try {
-    const issues = await prisma.Issue.findMany();
-    return new Response(JSON.stringify({ 'GET /issues': issues }), {
+    const issues = await prisma.Issue.findMany({
+      include: {
+        user: {
+          select: {
+            login: true,
+          },
+        },
+      },
+    });
+    return new Response(JSON.stringify(issues), {
       status: 200,
     });
   } catch (error) {

@@ -41,7 +41,7 @@ export async function POST(request) {
           description: issue.description,
           user: {
             connect: {
-              id: issue.user,
+              id: user.user_id,
             },
           },
         },

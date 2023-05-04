@@ -1,4 +1,4 @@
-const Description = () => {
+const Description = ({ register }) => {
   return (
     <div className="mt-5 md:mt-10">
       <label className="text-xl font-bold">Describe your problem</label>
@@ -12,6 +12,8 @@ const Description = () => {
         </p>
         <textarea
           rows={5}
+          placeholder="Type your description..."
+          {...register('description', { required: true })}
           className="border border-b-2 px-4 py-3 outline-none md:w-2/5"
         />
       </div>

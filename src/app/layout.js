@@ -2,6 +2,8 @@ import './globals.css';
 import Navbar from '../components/Navbar';
 import { getCurrentUser } from '@/lib/session';
 
+import * as Toast from '@radix-ui/react-toast';
+
 export const metadata = {
   title: 'Karen | Report issues',
   description: 'Report technical issues you encounter on the school equipment',

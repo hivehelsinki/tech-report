@@ -1,14 +1,31 @@
 'use client';
 import * as RadioGroup from '@radix-ui/react-radio-group';
+import { forwardRef, useEffect, useState } from 'react';
 
-const SelectDevice = () => {
-  const devices = ['iMac', 'Mouse', 'Keyboard', 'Other'].map((device) => {
+const SelectDevice = forwardRef(({ register }, ref) => {
+  const [devicesList, setDevicesList] = useState([]);
+  useEffect(() => {
+    const fetchDevices = async () => {
+      const res = await fetch('/api/devices');
+      const data = await res.json();
+      return data.devices;
+    };
+    const getData = async () => {
+      const data = await fetchDevices();
+      console.log(data);
+      setDevicesList(data);
+    };
+    getData();
+  }, []);
+
+  const devices = devicesList.map((device) => {
     return (
       <RadioGroup.Item
         className="inline-flex items-center"
         value={device}
-        id={device}
         key={device}
+        ref={ref}
+        {...register('device', { required: true })}
       >
         <div className="flex h-6 w-6 items-center justify-center rounded-full border border-slate-400">
           <RadioGroup.Indicator>
@@ -25,11 +42,15 @@ const SelectDevice = () => {
   return (
     <>
       <label className="text-xl font-bold">Faulty device</label>
-      <RadioGroup.Root className="mt-5 flex flex-col space-y-4 md:pl-5">
-        {devices}
+      <RadioGroup.Root
+        name="device"
+        className="mt-5 flex flex-col space-y-4 md:pl-5"
+      >
+        {devices.length > 0 ? devices : <p>Loading...</p>}
       </RadioGroup.Root>
     </>
   );
-};
+});
+SelectDevice.displayName = 'SelectDevice';
 
 export default SelectDevice;

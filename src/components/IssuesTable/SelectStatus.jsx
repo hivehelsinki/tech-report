@@ -11,6 +11,7 @@ import Badge from '../Badge';
 
 const SelectStatus = ({ user, selectedStatus, handleStatus }) => {
   const [open, setOpen] = useState(false);
+  console.log(user);
 
   return (
     <div className="flex items-center space-x-4">

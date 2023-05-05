@@ -1,8 +1,7 @@
 import './globals.css';
 import Navbar from '../components/Navbar';
+import { Toaster } from '@components/ui/toaster';
 import { getCurrentUser } from '@/lib/session';
-
-import * as Toast from '@radix-ui/react-toast';
 
 export const metadata = {
   title: 'Karen | Report issues',
@@ -15,6 +14,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <Toaster />
         {user && <Navbar user={user} />}
         <div>{children}</div>
       </body>

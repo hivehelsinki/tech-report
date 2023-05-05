@@ -20,7 +20,7 @@ const Description = ({ register, errors }) => {
           placeholder="Type your description..."
           {...register('description', {
             required: 'This is required',
-            minLength: { value: 10, message: 'Minimun 10 charachters' },
+            minLength: { value: 10, message: 'Minimum 10 characters' },
           })}
           className="border border-b-2 px-4 py-3 outline-none md:w-2/5"
         />

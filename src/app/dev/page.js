@@ -1,6 +1,8 @@
+'use client';
 import { notFound } from 'next/navigation';
 import Button from '@components/Button';
 import Badge from '@components/Badge';
+import { toast } from '@components/ui/use-toast';
 
 export default function Home() {
   if (process.env.NODE_ENV === 'production') {
@@ -28,13 +30,27 @@ export default function Home() {
           </div>
         </div>
         <div className="basis-full md:basis-1/2">
-          <h3 className="mb-3 text-xl font-bold">Lorem</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
-            consequatur recusandae, possimus distinctio voluptas quos reiciendis
-            cum accusantium ab. Asperiores a excepturi corporis perferendis.
-            Ipsa beatae id fugiat nobis!
-          </p>
+          <h3 className="mb-3 text-xl font-bold">Toast</h3>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => {
+                toast({ title: 'Hello', description: 'Description' });
+              }}
+            >
+              Toast
+            </Button>
+            <Button
+              onClick={() => {
+                toast({
+                  title: 'Hello',
+                  description: 'Description',
+                  variant: 'destructive',
+                });
+              }}
+            >
+              Error
+            </Button>
+          </div>
         </div>
         <div className="basis-full md:basis-1/2">
           <h3 className="mb-3 text-xl font-bold">Lorem</h3>

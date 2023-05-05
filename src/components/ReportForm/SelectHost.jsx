@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 
 // TODO: add logic when pressing enter to select host
+
 const SelectHost = ({ setValue, register, errors }) => {
   const [hostValue, setHostValue] = useState('');
   const [ip, setIP] = useState('');

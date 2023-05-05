@@ -27,7 +27,7 @@ const ReportForm = () => {
       }),
     });
     if (response.status === 201) {
-      window.location.replace('/success');
+      window.location.replace('/thanks');
     }
   };
   return (

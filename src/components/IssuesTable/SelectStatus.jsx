@@ -9,25 +9,9 @@ import {
 } from '@components/ui/popover';
 import Badge from '../Badge';
 
-const SelectStatus = ({ status, id, user }) => {
-  const possibleStatus = ['open', 'ongoing', 'resolved'];
+const SelectStatus = ({ user, selectedStatus, handleStatus }) => {
   const [open, setOpen] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState(status);
 
-  const handleStatusChange = (event) => {
-    if (possibleStatus.includes(event)) {
-      fetch(`/api/issues/${id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          status: event,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
-      setSelectedStatus(event);
-    }
-  };
   return (
     <div className="flex items-center space-x-4">
       <Popover open={open} onOpenChange={setOpen}>
@@ -42,7 +26,7 @@ const SelectStatus = ({ status, id, user }) => {
             side="bottom"
             align="start"
             onClick={(event) =>
-              handleStatusChange(event.target.getAttribute('value'))
+              handleStatus(event.target.getAttribute('value'))
             }
           >
             <p

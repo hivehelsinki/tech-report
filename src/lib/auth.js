@@ -26,6 +26,17 @@ export const authOptions = {
         token.login = profile.login;
         token.image_url = profile.image.link;
         token.admin = profile['staff?'];
+        fetch(`http://localhost:3000/api/users`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: token.user_id,
+            login: token.login,
+            admin: token.admin,
+          }),
+        }).catch((error) => console.log(error));
       }
       return token;
     },
@@ -35,17 +46,7 @@ export const authOptions = {
       session.user_id = token.user_id;
       session.image_url = token.image_url;
       session.admin = token.admin;
-      fetch(`http://localhost:3000/api/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: token.user_id,
-          login: token.login,
-          admin: token.admin,
-        }),
-      }).catch((error) => console.log(error));
+
       return session;
     },
     callbacks: {

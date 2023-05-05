@@ -2,19 +2,32 @@ import * as Accordion from '@radix-ui/react-accordion';
 import SelectStatus from './SelectStatus';
 import { ChevronDownIcon } from 'lucide-react';
 import calculateIssueTime from '@/lib/calculateIssueTime';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 const Issue = ({ props }) => {
-  const [reRender, setReRender] = useState(false);
   const { issue, user, checkedResolved } = props;
+  const [selectedStatus, setSelectedStatus] = useState(issue.status);
   const time = calculateIssueTime(
     new Date(issue.closed ?? issue.created),
     issue.closed ? 'closed' : 'created'
   );
-  useEffect(() => {
-    setReRender(!reRender);
-  }, [issue.status]);
 
-  if (checkedResolved === false && issue.status === 'resolved') return null;
+  const handleStatus = (event) => {
+    const possibleStatus = ['open', 'ongoing', 'resolved'];
+    if (possibleStatus.includes(event)) {
+      fetch(`/api/issues/${issue.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          status: event,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+    }
+    setSelectedStatus(event);
+  };
+
+  if (checkedResolved === false && selectedStatus === 'resolved') return null;
   return (
     <Accordion.Item value={issue.id} className=" text-hdark">
       <Accordion.Trigger className="group flex w-full items-center justify-between border-b px-5 py-4">
@@ -22,7 +35,11 @@ const Issue = ({ props }) => {
           <p>{issue.host}</p> <p>{issue.device}</p>
         </div>
         <div className="inline-flex items-center gap-6">
-          <SelectStatus user={user} status={issue.status} id={issue.id} />
+          <SelectStatus
+            user={user}
+            selectedStatus={selectedStatus}
+            handleStatus={handleStatus}
+          />
           <ChevronDownIcon className="h-5 w-5 transition-transform duration-300 group-data-[state=open]:rotate-180" />
         </div>
       </Accordion.Trigger>

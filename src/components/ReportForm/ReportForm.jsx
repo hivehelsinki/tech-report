@@ -9,9 +9,6 @@ import { useState } from 'react';
 
 const ReportForm = () => {
   const { register, handleSubmit, watch } = useForm();
-  // const [toastSuccess, setToastSuccess] = useState(false);
-  // const [toastFail, setToastFail] = useState(false);
-  // const [open, setOpen] = useState(false);
 
   const onSubmit = async (data, event) => {
     const response = await fetch('/api/issues', {

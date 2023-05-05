@@ -36,7 +36,6 @@ export default function Home() {
         </div>
         <div className="basis-full md:basis-1/2">
           <h3 className="mb-3 text-xl font-bold">Toast</h3>
-
           <div className="flex gap-2">
             <Button
               onClick={() => {
@@ -45,7 +44,6 @@ export default function Home() {
             >
               Toast
             </Button>
-
             <Button
               onClick={() => {
                 toast({

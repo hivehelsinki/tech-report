@@ -25,7 +25,9 @@ const SelectDevice = forwardRef(({ register }, ref) => {
         value={device}
         key={device}
         ref={ref}
-        {...register('device', { required: true })}
+        {...register('device', {
+          required: true,
+        })}
       >
         <div className="flex h-6 w-6 items-center justify-center rounded-full border border-slate-400">
           <RadioGroup.Indicator>
@@ -43,6 +45,7 @@ const SelectDevice = forwardRef(({ register }, ref) => {
     <>
       <label className="text-xl font-bold">Faulty device</label>
       <RadioGroup.Root
+        defaultValue="iMac"
         name="device"
         className="mt-5 flex flex-col space-y-4 md:pl-5"
       >

@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 
 // TODO: add logic when pressing enter to select host
-const SelectHost = ({ setValue, register }) => {
+const SelectHost = ({ setValue, register, errors }) => {
   const [hostValue, setHostValue] = useState('');
   const [ip, setIP] = useState('');
   const [hostSuggestion, setHostSuggestion] = useState('');
@@ -58,6 +58,11 @@ const SelectHost = ({ setValue, register }) => {
   return (
     <div className="mt-5 md:mt-10">
       <label className="text-xl font-bold">Hostname</label>
+      {errors.host && (
+        <p className="mt-3 font-light text-hred md:px-5">
+          {errors.host.message}
+        </p>
+      )}
       <div className="mt-4 flex flex-col md:flex-row-reverse md:justify-end md:pl-5">
         {hostSuggestion && (
           <p className="py-2 md:ml-12">
@@ -80,7 +85,7 @@ const SelectHost = ({ setValue, register }) => {
             onFocus={() => setOpen(true)}
             onValueChange={(value) => handleHostChange(value, 'key')}
             className="text-base"
-            {...register('host', { required: true })}
+            {...register('host', { required: 'This is required' })}
           />
           <CommandList
             className={!open && 'hidden'}

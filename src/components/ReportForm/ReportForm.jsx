@@ -4,11 +4,16 @@ import SelectHost from './SelectHost';
 import Description from './Description';
 import Button from '../Button';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { toast } from '@components/ui/use-toast';
 
 const ReportForm = () => {
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data, event) => {
     const response = await fetch('/api/issues', {
@@ -30,13 +35,13 @@ const ReportForm = () => {
       });
     }
   };
-  const onError = (errors, event) => console.log(errors);
+  const onError = (errors) => console.log(errors);
   return (
     <>
       <form className="my-7" onSubmit={handleSubmit(onSubmit, onError)}>
         <SelectDevice register={register} />
-        <SelectHost setValue={setValue} register={register} />
-        <Description register={register} />
+        <SelectHost setValue={setValue} register={register} errors={errors} />
+        <Description register={register} errors={errors} />
         <div className="mt-8 flex justify-center md:mt-14 md:justify-start md:pl-5">
           <Button type={'submit'}>Submit</Button>
         </div>

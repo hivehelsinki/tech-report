@@ -31,7 +31,7 @@ export default function Home() {
         </div>
         <div className="basis-full md:basis-1/2">
           <h3 className="mb-3 text-xl font-bold">Toast</h3>
-          <p>
+          <div className="flex gap-2">
             <Button
               onClick={() => {
                 toast({ title: 'Hello', description: 'Description' });
@@ -39,7 +39,18 @@ export default function Home() {
             >
               Toast
             </Button>
-          </p>
+            <Button
+              onClick={() => {
+                toast({
+                  title: 'Hello',
+                  description: 'Description',
+                  variant: 'destructive',
+                });
+              }}
+            >
+              Error
+            </Button>
+          </div>
         </div>
         <div className="basis-full md:basis-1/2">
           <h3 className="mb-3 text-xl font-bold">Lorem</h3>

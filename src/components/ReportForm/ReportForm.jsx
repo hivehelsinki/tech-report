@@ -4,14 +4,13 @@ import SelectHost from './SelectHost';
 import Description from './Description';
 import Button from '../Button';
 import { useForm } from 'react-hook-form';
-import { toast } from '@components/ui/use-toast';
+// import { redirect } from 'next/navigation';
 
 const ReportForm = () => {
   const {
     register,
     handleSubmit,
     setValue,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -28,17 +27,12 @@ const ReportForm = () => {
       }),
     });
     if (response.status === 201) {
-      reset();
-      return toast({
-        title: 'Great!',
-        description: 'Issue created successfully',
-      });
+      window.location.replace('/success');
     }
   };
-  const onError = (errors) => console.log(errors);
   return (
     <>
-      <form className="my-7" onSubmit={handleSubmit(onSubmit, onError)}>
+      <form className="my-7" onSubmit={handleSubmit(onSubmit)}>
         <SelectDevice register={register} />
         <SelectHost setValue={setValue} register={register} errors={errors} />
         <Description register={register} errors={errors} />

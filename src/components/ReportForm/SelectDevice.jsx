@@ -12,7 +12,6 @@ const SelectDevice = forwardRef(({ register }, ref) => {
     };
     const getData = async () => {
       const data = await fetchDevices();
-      console.log(data);
       setDevicesList(data);
     };
     getData();

@@ -1,6 +1,5 @@
 'use client';
 
-import buildHostSuggestion from '@/lib/buildHostSuggestion';
 import {
   Command,
   CommandEmpty,
@@ -14,8 +13,6 @@ import { useEffect, useState } from 'react';
 
 const SelectHost = ({ setValue, register, errors }) => {
   const [hostValue, setHostValue] = useState('');
-  const [ip, setIP] = useState('');
-  const [hostSuggestion, setHostSuggestion] = useState('');
   const [open, setOpen] = useState(false);
   const [hostsList, setHostsList] = useState([]);
 
@@ -30,20 +27,8 @@ const SelectHost = ({ setValue, register, errors }) => {
       setHostsList(data);
     };
     getData();
-    const getIP = async () => {
-      const res = await fetch('https://api.ipify.org?format=json');
-      const data = await res.json();
-      setIP(data.ip);
-    };
-    getIP();
   }, []);
 
-  useEffect(() => {
-    if (hostsList.length > 0 && ip) {
-      const suggestion = buildHostSuggestion(ip, hostsList);
-      setHostSuggestion(suggestion);
-    }
-  }, [hostsList, ip]);
   const hosts = hostsList.map((host, i) => {
     return (
       <CommandItem className="cursor-pointer text-base" key={i} value={host}>
@@ -65,19 +50,13 @@ const SelectHost = ({ setValue, register, errors }) => {
         </p>
       )}
       <div className="mt-4 flex flex-col md:flex-row-reverse md:justify-end md:pl-5">
-        {hostSuggestion && (
-          <p className="py-2 md:ml-12">
-            Are you connected on
-            <span
-              className="cursor-pointer underline underline-offset-4"
-              onClick={() => handleHostChange(hostSuggestion)}
-            >
-              {' '}
-              {hostSuggestion}
-            </span>
-            ?
-          </p>
-        )}
+        <p className="py-2 md:ml-12">
+          Are you connected on{' '}
+          <span className="cursor-pointer underline underline-offset-4">
+            ...{/* TODO: use 42 API or data sent via profile? */}
+          </span>
+          ?
+        </p>
         <Command className="rounded-none border md:w-2/5">
           <CommandInput
             name="host"

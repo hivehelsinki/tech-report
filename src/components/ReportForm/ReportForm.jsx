@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { toast } from '@components/ui/use-toast';
 
 const ReportForm = () => {
-  const { register, handleSubmit, watch, setValue } = useForm();
+  const { register, handleSubmit, setValue, reset } = useForm();
 
   const onSubmit = async (data, event) => {
     const response = await fetch('/api/issues', {
@@ -23,6 +23,7 @@ const ReportForm = () => {
       }),
     });
     if (response.status === 201) {
+      reset();
       return toast({
         title: 'Great!',
         description: 'Issue created successfully',
@@ -34,7 +35,7 @@ const ReportForm = () => {
     <>
       <form className="my-7" onSubmit={handleSubmit(onSubmit, onError)}>
         <SelectDevice register={register} />
-        <SelectHost register={register} />
+        <SelectHost setValue={setValue} register={register} />
         <Description register={register} />
         <div className="mt-8 flex justify-center md:mt-14 md:justify-start md:pl-5">
           <Button type={'submit'}>Submit</Button>

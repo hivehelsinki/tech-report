@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 
 // TODO: add logic when pressing enter to select host
-const SelectHost = ({ register }) => {
+const SelectHost = ({ setValue, register }) => {
   const [hostValue, setHostValue] = useState('');
   const [ip, setIP] = useState('');
   const [hostSuggestion, setHostSuggestion] = useState('');
@@ -52,6 +52,7 @@ const SelectHost = ({ register }) => {
   });
   const handleHostChange = (value, source) => {
     setHostValue(value);
+    setValue('host', value, { shouldValidate: true, shouldDirty: true });
     if (source !== 'key') setOpen(false);
   };
   return (
@@ -79,7 +80,7 @@ const SelectHost = ({ register }) => {
             onFocus={() => setOpen(true)}
             onValueChange={(value) => handleHostChange(value, 'key')}
             className="text-base"
-            {...register('host')}
+            {...register('host', { required: true })}
           />
           <CommandList
             className={!open && 'hidden'}

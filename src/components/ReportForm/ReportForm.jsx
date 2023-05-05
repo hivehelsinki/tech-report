@@ -8,7 +8,7 @@ import * as Toast from '@radix-ui/react-toast';
 import { useState } from 'react';
 
 const ReportForm = () => {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch, setValue } = useForm();
 
   const onSubmit = async (data, event) => {
     const response = await fetch('/api/issues', {
@@ -23,21 +23,12 @@ const ReportForm = () => {
       }),
     });
     if (response.status === 201) {
-      event.target.reset();
-      setOpen(true);
-      alert('Issue added successfully');
+      console.log(response);
     }
   };
   const onError = (errors, event) => console.log(errors);
   return (
     <>
-      <button
-        onClick={() => {
-          setOpen(false);
-        }}
-      >
-        set open
-      </button>
       {/* <Toast.Root
         className="data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=end]:animate-swipeOut grid grid-cols-[auto_max-content] items-center gap-x-[15px] rounded-md bg-white p-[15px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] [grid-template-areas:_'title_action'_'description_action'] data-[swipe=cancel]:translate-x-0 data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:transition-[transform_200ms_ease-out]"
         open={open}

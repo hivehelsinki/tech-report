@@ -1,16 +1,16 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import SelectStatus from './SelectStatus';
 import { ChevronDownIcon } from 'lucide-react';
-import calculateIssueTime from '@/lib/calculateIssueTime';
+import moment from 'moment';
 import { useState } from 'react';
 const Issue = ({ props }) => {
   const { issue, user, checkedResolved } = props;
   const [selectedStatus, setSelectedStatus] = useState(issue.status);
-  const time = calculateIssueTime(
-    new Date(issue.closed ?? issue.created),
-    issue.closed ? 'closed' : 'created'
-  );
-
+  console.log('issue created', issue.created);
+  console.log('issue closed', issue.closed);
+  const time =
+    (issue.closed ? 'closed ' : 'created ') +
+    moment(issue.closed ?? issue.created).fromNow();
   const handleStatus = (event) => {
     const possibleStatus = ['open', 'ongoing', 'resolved'];
     if (possibleStatus.includes(event)) {

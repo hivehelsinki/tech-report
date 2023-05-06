@@ -4,6 +4,9 @@ import { getCurrentUser } from '@/lib/session';
 export async function GET() {
   try {
     const issues = await prisma.Issue.findMany({
+      orderBy: {
+        id: 'desc',
+      },
       include: {
         user: {
           select: {

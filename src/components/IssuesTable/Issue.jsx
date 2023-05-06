@@ -6,8 +6,6 @@ import { useState } from 'react';
 const Issue = ({ props }) => {
   const { issue, user, checkedResolved } = props;
   const [selectedStatus, setSelectedStatus] = useState(issue.status);
-  console.log('issue created', issue.created);
-  console.log('issue closed', issue.closed);
   const time =
     (issue.closed ? 'closed ' : 'created ') +
     moment(issue.closed ?? issue.created).fromNow();

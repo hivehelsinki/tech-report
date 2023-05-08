@@ -4,15 +4,16 @@ import { ChevronDownIcon } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
 const Issue = ({ props }) => {
-  const { issue, user, checkedResolved } = props;
+  const { user, checkedResolved } = props;
+  const [issue, setIssue] = useState(props.issue);
   const [selectedStatus, setSelectedStatus] = useState(issue.status);
   const time =
     (issue.closed ? 'closed ' : 'created ') +
     moment(issue.closed ?? issue.created).fromNow();
-  const handleStatus = (event) => {
+  const handleStatus = async (event) => {
     const possibleStatus = ['open', 'ongoing', 'resolved'];
     if (possibleStatus.includes(event)) {
-      fetch(`/api/issues/${issue.id}`, {
+      const data = await fetch(`/api/issues/${issue.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           status: event,
@@ -21,8 +22,10 @@ const Issue = ({ props }) => {
           'Content-type': 'application/json; charset=UTF-8',
         },
       });
+      const updatedIssue = await data.json();
+      setIssue(updatedIssue['PATCH /issue']);
+      setSelectedStatus(event);
     }
-    setSelectedStatus(event);
   };
 
   if (checkedResolved === false && selectedStatus === 'resolved') return null;
@@ -44,7 +47,7 @@ const Issue = ({ props }) => {
       <Accordion.Content className="border-b bg-slate-50 px-2 py-6">
         <div className="md:pl-20">
           <p className="text-sm ">
-            <span className="font-medium  ">{issue.user.login}:</span>{' '}
+            <span className="font-medium  ">{user.login}:</span>{' '}
             {issue.description}
           </p>
           <p className="mt-5 text-xs">{time}</p>

@@ -7,7 +7,7 @@ export async function GET(request, { params }) {
         id: Number(params.id),
       },
     });
-    return new Response(JSON.stringify({ data: user }), {
+    return new Response(JSON.stringify(user), {
       status: 200,
     });
   } catch (error) {

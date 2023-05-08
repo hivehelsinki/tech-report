@@ -4,7 +4,7 @@ import SelectHost from './SelectHost';
 import Description from './Description';
 import Button from '../Button';
 import { useForm } from 'react-hook-form';
-// import { redirect } from 'next/navigation';
+import { toast } from '@components/ui/use-toast';
 
 const ReportForm = () => {
   const {
@@ -28,6 +28,12 @@ const ReportForm = () => {
     });
     if (response.status === 201) {
       window.location.replace('/thanks');
+    } else {
+      toast({
+        title: 'Error',
+        description: 'Something went wrong, check your input and retry.',
+        variant: 'destructive',
+      });
     }
   };
   return (

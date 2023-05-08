@@ -22,8 +22,8 @@ const Issue = ({ props }) => {
           'Content-type': 'application/json; charset=UTF-8',
         },
       });
-      const updatedIssue = await data.json();
-      setIssue(updatedIssue['PATCH /issue']);
+      const issueUpdate = await data.json();
+      setIssue(issueUpdate);
       setSelectedStatus(event);
     }
   };

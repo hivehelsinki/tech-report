@@ -20,9 +20,7 @@ export async function GET() {
     });
   } catch (error) {
     console.log(`#########\n ${error.message} \n#########`);
-    return new Response(JSON.stringify({ 'GET /issues': error.message }), {
-      status: 500,
-    });
+    return new Response({ status: 500 });
   }
 }
 
@@ -30,9 +28,7 @@ export async function POST(request) {
   const user = await getCurrentUser(request);
   if (!user) {
     console.log(`#########\n UNAUTORISED \n#########`);
-    return new Response(JSON.stringify({ 'POST /issues': 'unautorised' }), {
-      status: 401,
-    });
+    return new Response({ status: 401 });
   } else {
     try {
       const issue = await request.json();
@@ -49,14 +45,10 @@ export async function POST(request) {
           },
         },
       });
-      return new Response(JSON.stringify({ 'POST /issues': issueCreation }), {
-        status: 201,
-      });
+      return new Response({ status: 201 });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);
-      return new Response(JSON.stringify({ 'POST /issues': error.message }), {
-        status: 500,
-      });
+      return new Response({ status: 500 });
     }
   }
 }

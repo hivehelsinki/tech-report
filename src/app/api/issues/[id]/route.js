@@ -9,14 +9,12 @@ export async function GET(request, { params }) {
         id: Number(params.id),
       },
     });
-    return new Response(JSON.stringify({ 'GET /issue': issue }), {
+    return new Response(JSON.stringify(issue), {
       status: 200,
     });
   } catch (error) {
     console.log(`#########\n ${error.message} \n#########`);
-    return new Response(JSON.stringify({ 'GET /issues': error.message }), {
-      status: 500,
-    });
+    return new Response({ status: 500 });
   }
 }
 
@@ -25,8 +23,6 @@ export async function PATCH(request, { params }) {
   if (user && user.admin) {
     try {
       const issue = await request.json();
-      console.log('issue :', `issue`);
-
       const issueUpdate = await prisma.Issue.update({
         where: {
           id: Number(params.id),
@@ -36,19 +32,15 @@ export async function PATCH(request, { params }) {
           closed: issue.status === 'resolved' ? new Date() : null,
         },
       });
-      return new Response(JSON.stringify({ 'PATCH /issue': issueUpdate }), {
+      return new Response(JSON.stringify(issueUpdate), {
         status: 200,
       });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);
-      return new Response(JSON.stringify({ 'PATCH /issue': error.message }), {
-        status: 500,
-      });
+      return new Response({ status: 500 });
     }
   } else {
     console.log(`#########\n UNAUTORISED \n#########`);
-    return new Response(JSON.stringify({ 'PATCH /issue': 'unautorised' }), {
-      status: 401,
-    });
+    return new Response({ status: 401 });
   }
 }

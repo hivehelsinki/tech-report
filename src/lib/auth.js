@@ -26,7 +26,7 @@ export const authOptions = {
         token.login = profile.login;
         token.image_url = profile.image.link;
         token.admin = profile['staff?'];
-        fetch(`http://localhost:3000/api/users`, {
+        fetch(`/api/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

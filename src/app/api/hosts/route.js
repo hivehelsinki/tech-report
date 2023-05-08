@@ -7,5 +7,6 @@ export async function GET() {
     return Response.json({ hosts: ymlData.hosts });
   } catch (error) {
     console.log(error);
+    return new Response({}, { status: 500 });
   }
 }

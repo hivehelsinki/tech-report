@@ -4,7 +4,6 @@ import SelectHost from './SelectHost';
 import Description from './Description';
 import Button from '../Button';
 import { useForm } from 'react-hook-form';
-// import { redirect } from 'next/navigation';
 
 const ReportForm = () => {
   const {

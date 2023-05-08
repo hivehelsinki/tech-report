@@ -7,6 +7,7 @@ const Issue = ({ props }) => {
   const { user, checkedResolved } = props;
   const [issue, setIssue] = useState(props.issue);
   const [selectedStatus, setSelectedStatus] = useState(issue.status);
+  const userIssue = props.issue.user.login;
   const time =
     (issue.closed ? 'closed ' : 'created ') +
     moment(issue.closed ?? issue.created).fromNow();
@@ -49,7 +50,7 @@ const Issue = ({ props }) => {
       <Accordion.Content className="border-b bg-slate-50 px-2 py-6">
         <div className="md:pl-20">
           <p className="text-sm ">
-            <span className="font-medium  ">{user.login}:</span>{' '}
+            <span className="font-medium  ">{userIssue}:</span>{' '}
             {issue.description}
           </p>
           <p className="mt-5 text-xs">{time}</p>

@@ -26,7 +26,9 @@ export const authOptions = {
         token.login = profile.login;
         token.image_url = profile.image.link;
         token.admin = profile['staff?'];
-        fetch(`/api/users`, {
+
+        // should be using the database instead of API. (it's backend, not frontend)
+        fetch(`http://localhost:3000/api/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -38,6 +40,7 @@ export const authOptions = {
           }),
         }).catch((error) => console.log(error));
       }
+
       return token;
     },
     async session({ session, token }) {

@@ -50,13 +50,13 @@ const SelectHost = ({ setValue, register, errors }) => {
         </p>
       )}
       <div className="mt-4 flex flex-col md:flex-row-reverse md:justify-end md:pl-5">
-        <p className="py-2 md:ml-12">
+        {/* <p className="py-2 md:ml-12">
           Are you connected on{' '}
           <span className="cursor-pointer underline underline-offset-4">
-            ...{/* TODO: use 42 API or data sent via profile? */}
+            TODO: use 42 API or data sent via profile?
           </span>
           ?
-        </p>
+        </p> */}
         <Command className="rounded-none border md:w-2/5">
           <CommandInput
             name="host"
@@ -65,7 +65,11 @@ const SelectHost = ({ setValue, register, errors }) => {
             onFocus={() => setOpen(true)}
             onValueChange={(value) => handleHostChange(value, 'key')}
             className="text-base"
-            {...register('host', { required: 'This is required' })}
+            {...register('host', {
+              required: 'This is required',
+              validate: (value) =>
+                hostsList.includes(value) || 'This host does not exist',
+            })}
           />
           <CommandList
             className={!open && 'hidden'}

@@ -1,5 +1,7 @@
 import { prisma } from '@/lib/db.js';
 import { getCurrentUser } from '@/lib/session';
+import fs from 'fs';
+import yaml from 'js-yaml';
 
 export async function GET() {
   try {
@@ -20,7 +22,7 @@ export async function GET() {
     });
   } catch (error) {
     console.log(`#########\n ${error.message} \n#########`);
-    return new Response({ status: 500 });
+    return new Response({}, { status: 500 });
   }
 }
 
@@ -28,11 +30,14 @@ export async function POST(request) {
   const user = await getCurrentUser(request);
   if (!user) {
     console.log(`#########\n UNAUTORISED \n#########`);
-    return new Response({ status: 401 });
+    return new Response({}, { status: 401 });
   } else {
     try {
       const issue = await request.json();
-
+      const ymlData = yaml.load(fs.readFileSync(`./config.yml`, 'utf8'));
+      if (ymlData.hosts.includes(issue.host) === false) {
+        return new Response({ status: 400 });
+      }
       const issueCreation = await prisma.Issue.create({
         data: {
           host: issue.host,
@@ -45,10 +50,10 @@ export async function POST(request) {
           },
         },
       });
-      return new Response({ status: 201 });
+      return new Response({}, { status: 201 });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);
-      return new Response({ status: 500 });
+      return new Response({}, { status: 500 });
     }
   }
 }

@@ -10,15 +10,31 @@ export async function GET() {
     return new Response({}, { status: 401 });
   } else {
     try {
-      let issues = await prisma.Issue.findMany({
-        include: {
-          user: {
-            select: {
-              login: true,
+      let issues = [];
+      if (user.admin === true) {
+        issues = await prisma.Issue.findMany({
+          include: {
+            user: {
+              select: {
+                login: true,
+              },
             },
           },
-        },
-      });
+        });
+      } else {
+        issues = await prisma.Issue.findMany({
+          where: {
+            userId: user.user_id,
+          },
+          include: {
+            user: {
+              select: {
+                login: true,
+              },
+            },
+          },
+        });
+      }
       issues = issues.sort((a, b) => {
         if (a.status === b.status) return 0;
         if (a.status === 'resolved') return -1;
@@ -27,9 +43,6 @@ export async function GET() {
         if (b.status === 'ongoing') return 1;
         else return 0;
       });
-      if (user.admin === false) {
-        issues = issues.filter((issue) => issue.user.login === user.login);
-      }
       return new Response(JSON.stringify(issues), {
         status: 200,
       });

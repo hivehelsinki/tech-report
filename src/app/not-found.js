@@ -7,8 +7,8 @@ export default async function NotFound() {
     <main className="p-2 pt-20">
       <div className="flex h-full flex-col items-center justify-center gap-12 text-hdark lg:px-24">
         <div className="relative">
-          <Image src={notFound} alt="404" width={900} height={743} />
-          <p className="absolute right-4 top-0 text-7xl font-semibold mix-blend-overlay md:text-9xl">
+          <Image src={notFound} alt="404" width={500} height={500} />
+          <p className="absolute right-4 top-1 text-7xl text-white mix-blend-overlay md:text-8xl">
             404
           </p>
         </div>

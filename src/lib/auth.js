@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import FortyTwoProvider from 'next-auth/providers/42-school';
+import { prisma } from '@/lib/db.js';
 
 export const authOptions = {
   secret: process.env.SECRET,
@@ -27,20 +28,18 @@ export const authOptions = {
         token.image_url = profile.image.link;
         token.admin = profile['staff?'];
 
-        // should be using the database instead of API. (it's backend, not frontend)
-        fetch(`http://localhost:3000/api/users`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
+        await prisma.user.upsert({
+          create: {
             id: token.user_id,
             login: token.login,
             admin: token.admin,
-          }),
-        }).catch((error) => console.log(error));
+          },
+          where: {
+            id: token.user_id,
+          },
+          update: {},
+        });
       }
-
       return token;
     },
     async session({ session, token }) {

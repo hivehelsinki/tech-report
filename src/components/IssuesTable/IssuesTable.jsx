@@ -8,9 +8,11 @@ import Issue from './Issue.jsx';
 const RenderIssues = ({ props }) => {
   const { issues, user, checkedResolved } = props;
   if (issues.length > 0)
-    return props.issues.map((issue, i) => {
+    return props.issues.map((issue) => {
       if (issue.userId === user.user_id || user.admin === true)
-        return <Issue props={{ issue, user, checkedResolved }} key={i} />;
+        return (
+          <Issue props={{ issue, user, checkedResolved }} key={issue.id} />
+        );
     });
 };
 

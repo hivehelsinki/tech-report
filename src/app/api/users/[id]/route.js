@@ -12,6 +12,6 @@ export async function GET(request, { params }) {
     });
   } catch (error) {
     console.log(`#########\n ${error.message} \n#########`);
-    return new Response({ status: 500 });
+    return new Response({}, { status: 500 });
   }
 }

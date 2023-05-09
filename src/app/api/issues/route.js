@@ -4,30 +4,57 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 
 export async function GET() {
-  try {
-    const issues = await prisma.Issue.findMany({
-      orderBy: {
-        id: 'desc',
-      },
-      include: {
-        user: {
-          select: {
-            login: true,
+  const user = await getCurrentUser();
+  if (!user) {
+    console.log(`#########\n UNAUTORISED \n#########`);
+    return new Response({}, { status: 401 });
+  } else {
+    try {
+      let issues = [];
+      if (user.admin === true) {
+        issues = await prisma.Issue.findMany({
+          include: {
+            user: {
+              select: {
+                login: true,
+              },
+            },
           },
-        },
-      },
-    });
-    return new Response(JSON.stringify(issues), {
-      status: 200,
-    });
-  } catch (error) {
-    console.log(`#########\n ${error.message} \n#########`);
-    return new Response({}, { status: 500 });
+        });
+      } else {
+        issues = await prisma.Issue.findMany({
+          where: {
+            userId: user.user_id,
+          },
+          include: {
+            user: {
+              select: {
+                login: true,
+              },
+            },
+          },
+        });
+      }
+      issues = issues.sort((a, b) => {
+        if (a.status === b.status) return 0;
+        if (a.status === 'resolved') return -1;
+        if (b.status === 'resolved') return 1;
+        if (a.status === 'ongoing') return -1;
+        if (b.status === 'ongoing') return 1;
+        else return 0;
+      });
+      return new Response(JSON.stringify(issues), {
+        status: 200,
+      });
+    } catch (error) {
+      console.log(`#########\n ${error.message} \n#########`);
+      return new Response({}, { status: 500 });
+    }
   }
 }
 
 export async function POST(request) {
-  const user = await getCurrentUser(request);
+  const user = await getCurrentUser();
   if (!user) {
     console.log(`#########\n UNAUTORISED \n#########`);
     return new Response({}, { status: 401 });
@@ -57,4 +84,3 @@ export async function POST(request) {
     }
   }
 }
-// curl -d '{"host": "c1r1p1", "device": "iMac", "description": "need to reinstall CLI", "user": "2"}' localhost:3000/api/issues

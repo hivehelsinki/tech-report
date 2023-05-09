@@ -6,7 +6,7 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 
 export const metadata = {
-  title: 'Karen | Report issues',
+  title: 'Report issues',
   description: 'Report technical issues you encounter on the school equipment',
 };
 

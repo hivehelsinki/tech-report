@@ -2,7 +2,7 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { forwardRef, useEffect, useState } from 'react';
 
-const SelectDevice = forwardRef(({ register }, ref) => {
+const SelectDevice = forwardRef(({ register, setValue }, ref) => {
   const [devicesList, setDevicesList] = useState([]);
   useEffect(() => {
     const fetchDevices = async () => {
@@ -16,6 +16,12 @@ const SelectDevice = forwardRef(({ register }, ref) => {
     };
     getData();
   }, []);
+  const handleDeviceChange = (event) => {
+    setValue('device', event.target.value, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  };
 
   const devices = devicesList.map((device) => {
     return (
@@ -25,6 +31,7 @@ const SelectDevice = forwardRef(({ register }, ref) => {
         key={device}
         ref={ref}
         {...register('device', {
+          type: 'radio',
           required: true,
         })}
       >
@@ -44,9 +51,10 @@ const SelectDevice = forwardRef(({ register }, ref) => {
     <>
       <label className="text-xl font-bold">Faulty device</label>
       <RadioGroup.Root
-        defaultValue="iMac"
         name="device"
         className="mt-5 flex flex-col space-y-4 md:pl-5"
+        onChange={(event) => handleDeviceChange(event)}
+        defaultValue="iMac"
       >
         {devices.length > 0 ? devices : <p>Loading...</p>}
       </RadioGroup.Root>

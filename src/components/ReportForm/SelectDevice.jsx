@@ -52,7 +52,7 @@ const SelectDevice = forwardRef(({ register, setValue }, ref) => {
       <label className="text-xl font-bold">Faulty device</label>
       <RadioGroup.Root
         name="device"
-        className="mt-5 flex flex-col space-y-4 md:pl-5"
+        className="mt-4 flex flex-col space-y-4 md:pl-5"
         onChange={(event) => handleDeviceChange(event)}
         defaultValue="iMac"
       >

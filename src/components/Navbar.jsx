@@ -10,7 +10,7 @@ import { signOut } from 'next-auth/react';
 
 // TODO: accentuate the current position in navbar
 //const path = usePathname();
-const Navbar = ({ user }) => {
+const Navbar = ({ user, appName }) => {
   return (
     <header className="h-16 w-full text-hdark shadow">
       <div className="container h-full">
@@ -18,7 +18,7 @@ const Navbar = ({ user }) => {
           <Link href="/" className="flex items-center justify-between">
             <div className="inline-flex cursor-pointer gap-2 ">
               <Image src={logo} alt="school logo" width={28} height={28} />
-              <span className="bold text-xl font-bold">Karen</span>
+              <span className="bold text-xl font-bold">{appName}</span>
             </div>
           </Link>
           <div className="md:hidden">

@@ -13,6 +13,9 @@ export async function GET() {
       let issues = [];
       if (user.admin === true) {
         issues = await prisma.Issue.findMany({
+          orderBy: {
+            id: 'desc',
+          },
           include: {
             user: {
               select: {
@@ -25,6 +28,9 @@ export async function GET() {
         issues = await prisma.Issue.findMany({
           where: {
             userId: user.user_id,
+          },
+          orderBy: {
+            id: 'desc',
           },
           include: {
             user: {
@@ -65,7 +71,7 @@ export async function POST(request) {
       if (ymlData.hosts.includes(issue.host) === false) {
         return new Response({ status: 400 });
       }
-      const issueCreation = await prisma.Issue.create({
+      await prisma.Issue.create({
         data: {
           host: issue.host,
           device: issue.device,

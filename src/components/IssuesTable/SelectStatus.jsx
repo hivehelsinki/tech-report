@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import {
   Popover,
   PopoverContent,
@@ -9,15 +7,13 @@ import {
 } from '@components/ui/popover';
 import Badge from '../Badge';
 
-const SelectStatus = ({ user, selectedStatus, handleStatus }) => {
-  const [open, setOpen] = useState(false);
-
+const SelectStatus = ({ user, status, handleStatus, open, setOpen }) => {
   return (
     <div className="flex items-center space-x-4">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <div>
-            <Badge variant={selectedStatus} />
+            <Badge variant={status} />
           </div>
         </PopoverTrigger>
         {user.admin && (

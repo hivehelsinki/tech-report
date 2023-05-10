@@ -47,7 +47,11 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
         <div className="md:pl-20">
           <div className="text-md">
             {issue.description.split('\n').map((line, index) => {
-              return <p key={index}>{line}</p>;
+              return (
+                <p key={index} className="break-words md:pr-20">
+                  {line}
+                </p>
+              );
             })}
           </div>
 

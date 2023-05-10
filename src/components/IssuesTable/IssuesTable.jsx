@@ -33,7 +33,6 @@ const RenderIssues = ({ user, checkedResolved }) => {
 
 const IssuesTable = ({ user }) => {
   const [checkedResolved, setCheckedResolved] = useState(false);
-
   return (
     <div className="mt-11 w-full md:container">
       <div className="mb-5 flex w-full flex-row justify-end gap-5">

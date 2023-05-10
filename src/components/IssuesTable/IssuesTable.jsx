@@ -28,7 +28,7 @@ const IssuesTable = ({ user }) => {
 
   if (issues.length > 0) {
     return (
-      <div className="mt-11 w-full md:container">
+      <div className="mt-11 w-full">
         <div className="mb-5 flex w-full flex-row justify-end gap-5">
           <div className="flex items-center gap-2">
             <Checkbox.Root
@@ -39,7 +39,7 @@ const IssuesTable = ({ user }) => {
                 <CheckIcon className="h-5 w-5" />
               </Checkbox.Indicator>
             </Checkbox.Root>
-            <label className="leading-none text-slate-600">Resolved</label>
+            <label className="leading-none text-slate-600">Show resolved</label>
           </div>
         </div>
         <Accordion.Root type="single" collapsible className="w-full border">

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as Accordion from '@radix-ui/react-accordion';
 import SelectStatus from './SelectStatus';
 import { ChevronDownIcon } from 'lucide-react';
@@ -8,9 +9,7 @@ const Issue = ({ props }) => {
   const [issue, setIssue] = useState(props.issue);
   const [selectedStatus, setSelectedStatus] = useState(issue.status);
   const userIssue = props.issue.user.login;
-  const time =
-    (issue.closed ? 'closed ' : 'created ') +
-    moment(issue.closed ?? issue.created).fromNow();
+
   const handleStatus = async (event) => {
     const possibleStatus = ['open', 'ongoing', 'resolved'];
     if (possibleStatus.includes(event)) {
@@ -49,11 +48,23 @@ const Issue = ({ props }) => {
       </Accordion.Header>
       <Accordion.Content className="border-b bg-slate-50 px-2 py-6">
         <div className="md:pl-20">
-          <p className="text-sm ">
-            <span className="font-medium  ">{userIssue}:</span>{' '}
-            {issue.description}
+          <div className="text-md">
+            {issue.description.split('\n').map((line, index) => {
+              return <p key={index}>{line}</p>;
+            })}
+          </div>
+
+          <p className="mt-5 text-sm">
+            created by{' '}
+            <Link
+              href={`https://profile.intra.42.fr/users/${userIssue}`}
+              className="underline"
+            >
+              {userIssue}
+            </Link>{' '}
+            {moment(issue.created).fromNow()}
+            {issue.closed && ` and closed ${moment(issue.closed).fromNow()}`}
           </p>
-          <p className="mt-5 text-xs">{time}</p>
         </div>
       </Accordion.Content>
     </Accordion.Item>

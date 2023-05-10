@@ -1,44 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+    <a href="https://www.hive.fi/" target="_blank">
+        <img src="https://github.com/hivehelsinki/.github/blob/main/assets/logo.png?raw=true" width="128" alt="Hive logo" />
+    </a>
+</p>
+
+<p align="center">
+  <sub>Created by <a href="https://github.com/amedeomajer">Amedeo Majer (ame)</a></sub>
+</p>
+
+## About tech-report
+
+The `Tech-report` app provides Hive students with a platform to report technical issues related to the school's IT equipment. This tool enables staff members to efficiently address and follow up on these reported issues.
+
+The primary objective of this app is to guide students in correctly reporting technical problems and to maintain a record of these issues. In the near future, by tracking and documenting the reported incidents, the app will help identify any recurring problematic equipment. This information can be valuable for improving the school's IT infrastructure and ensuring a smoother experience for all students.
 
 ## Getting Started
 
-First, run the development server:
+... TBC
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### SET UP 42 APP
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.js`.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## SET UP 42 APP
-
-1. Go to "https://profile.intra.42.fr/oauth/applications" and click "REGISTER A NEW APP".
-2. In the field Redirect URI add: http://localhost:3000/api/auth/callback/42-school and http://localhost:3001/api/auth/callback/42-school. Each on its own line.
+1. Create a new API application on the [42 intranet](https://profile.intra.42.fr/oauth/applications/new)
+2. In the field Redirect URI add: http://localhost:3000/api/auth/callback/42-school
 3. In the scopes select "Access the user public data" and submit.
 
-Now the app will be registered and you will get a FT_UID and a FT_SECRET to add to your .env file.
+Now that the app is registered you can fill in `FT_UID` and `FT_SECRET` into the `.env` file that you can find at the root directory of the project.
+
+## Deploy
+
+... TBC

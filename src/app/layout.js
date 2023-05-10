@@ -1,5 +1,6 @@
 import './globals.css';
 import Navbar from '../components/Navbar';
+import Footer from '@/components/Footer';
 import { Toaster } from '@components/ui/toaster';
 import { getCurrentUser } from '@/lib/session';
 import fs from 'fs';
@@ -20,6 +21,7 @@ export default async function RootLayout({ children }) {
         <Toaster />
         {user && <Navbar user={user} appName={appName} />}
         <div>{children}</div>
+        {user && <Footer />}
       </body>
     </html>
   );

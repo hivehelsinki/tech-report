@@ -14,6 +14,9 @@ export async function GET() {
       let issues = [];
       if (user.admin === true) {
         issues = await prisma.Issue.findMany({
+          orderBy: {
+            id: 'desc',
+          },
           include: {
             user: {
               select: {
@@ -26,6 +29,9 @@ export async function GET() {
         issues = await prisma.Issue.findMany({
           where: {
             userId: user.user_id,
+          },
+          orderBy: {
+            id: 'desc',
           },
           include: {
             user: {

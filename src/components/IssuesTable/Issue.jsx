@@ -4,16 +4,12 @@ import SelectStatus from './SelectStatus';
 import { ChevronDownIcon } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
-const Issue = ({ props }) => {
-  const { user, checkedResolved } = props;
-  const [issue, setIssue] = useState(props.issue);
-  const [selectedStatus, setSelectedStatus] = useState(issue.status);
-  const userIssue = props.issue.user.login;
-
+const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
+  const [open, setOpen] = useState(false);
   const handleStatus = async (event) => {
     const possibleStatus = ['open', 'ongoing', 'resolved'];
     if (possibleStatus.includes(event)) {
-      const data = await fetch(`/api/issues/${issue.id}`, {
+      await fetch(`/api/issues/${issue.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           status: event,
@@ -22,13 +18,12 @@ const Issue = ({ props }) => {
           'Content-type': 'application/json; charset=UTF-8',
         },
       });
-      const issueUpdate = await data.json();
-      setIssue(issueUpdate);
-      setSelectedStatus(event);
+      setTriggerSorting((prev) => !prev);
+      setOpen(!open);
     }
   };
 
-  if (checkedResolved === false && selectedStatus === 'resolved') return null;
+  if (checkedResolved === false && issue.status === 'resolved') return null;
   return (
     <Accordion.Item value={issue.id} className=" text-hdark">
       <Accordion.Header className="group relative flex w-full items-center justify-between border-b px-5 py-4">
@@ -41,8 +36,10 @@ const Issue = ({ props }) => {
         <div className="absolute right-16 inline-flex items-center gap-6 md:right-9">
           <SelectStatus
             user={user}
-            selectedStatus={selectedStatus}
+            status={issue.status}
             handleStatus={handleStatus}
+            open={open}
+            setOpen={setOpen}
           />
         </div>
       </Accordion.Header>
@@ -61,10 +58,10 @@ const Issue = ({ props }) => {
           <p className="mt-5 text-sm">
             created by{' '}
             <Link
-              href={`https://profile.intra.42.fr/users/${userIssue}`}
+              href={`https://profile.intra.42.fr/users/${issue.user.login}`}
               className="underline"
             >
-              {userIssue}
+              {issue.user.login}
             </Link>{' '}
             {moment(issue.created).fromNow()}
             {issue.closed && ` and closed ${moment(issue.closed).fromNow()}`}

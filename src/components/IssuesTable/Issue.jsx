@@ -9,9 +9,7 @@ const Issue = ({ props }) => {
   const [issue, setIssue] = useState(props.issue);
   const [selectedStatus, setSelectedStatus] = useState(issue.status);
   const userIssue = props.issue.user.login;
-  const time =
-    (issue.closed ? 'closed ' : 'created ') +
-    moment(issue.closed ?? issue.created).fromNow();
+
   const handleStatus = async (event) => {
     const possibleStatus = ['open', 'ongoing', 'resolved'];
     if (possibleStatus.includes(event)) {

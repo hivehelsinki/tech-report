@@ -5,8 +5,10 @@ import Description from './Description';
 import Button from '../Button';
 import { useForm } from 'react-hook-form';
 import { toast } from '@components/ui/use-toast';
+import { useState } from 'react';
 
 const ReportForm = () => {
+  const [processing, setProcessing] = useState(false);
   const {
     register,
     handleSubmit,
@@ -28,6 +30,7 @@ const ReportForm = () => {
       });
       return;
     }
+    setProcessing(true);
     const response = await fetch('/api/issues', {
       method: 'POST',
       headers: {
@@ -48,6 +51,7 @@ const ReportForm = () => {
         variant: 'destructive',
       });
     }
+    setProcessing(false);
   };
   return (
     <>
@@ -56,7 +60,9 @@ const ReportForm = () => {
         <SelectHost setValue={setValue} register={register} errors={errors} />
         <Description watch={watch} register={register} errors={errors} />
         <div className="mt-8 flex justify-center md:mt-14 md:justify-start md:pl-5">
-          <Button type={'submit'}>Submit</Button>
+          <Button type={'submit'} disabled={processing}>
+            Submit
+          </Button>
         </div>
       </form>
     </>

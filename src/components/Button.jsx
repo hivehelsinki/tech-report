@@ -19,9 +19,12 @@ const buttonVariants = cva(
   }
 );
 
-const Button = ({ children, className, ...props }) => {
+const Button = ({ children, className, size, variant, ...props }) => {
   return (
-    <button className={cn(buttonVariants({ className }))} {...props}>
+    <button
+      className={cn(buttonVariants({ size, variant, className }))}
+      {...props}
+    >
       {children}
     </button>
   );

@@ -29,3 +29,10 @@ Now that the app is registered you can fill in `FT_UID` and `FT_SECRET` into the
 ## Deploy
 
 ... TBC
+
+## GDPR
+
+The application stores the following information:
+
+- Student intra id
+- Student login

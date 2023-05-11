@@ -17,8 +17,10 @@ export default function SignIn() {
             height={200}
           />
         </div>
-        <p className="pb-40 lg:pb-32">Technical issue report system.</p>
-
+        <div className="flex flex-col items-center gap-2 pb-40 lg:pb-32">
+          <p>Welcome to the Technical Issue Reporting System.</p>
+          <p> Login to report an issue.</p>
+        </div>
         <Button onClick={() => signIn('42-school', { callbackUrl: '/' })}>
           Login
         </Button>

@@ -12,7 +12,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request, response) {
+export async function POST(request) {
   try {
     const user = await request.json();
     const userExists = await prisma.User.findFirst({

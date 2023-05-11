@@ -30,7 +30,10 @@ const Description = ({ watch, register, errors }) => {
           <div
             className={`absolute -bottom-6 right-0 mb-2 mr-2 text-xs font-light
             ${
-              watch('description').length > 400 ? 'text-hred' : 'text-gray-400'
+              watch('description').length > 400 ||
+              watch('description').length < 25
+                ? 'text-hred'
+                : 'text-gray-400'
             }`}
           >
             {watch('description').length}/400

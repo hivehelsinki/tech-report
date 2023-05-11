@@ -7,6 +7,7 @@ import {
   CommandItem,
   CommandList,
 } from '@components/ui/command.jsx';
+import { Cross2Icon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 
 // TODO: add logic when pressing enter to select host
@@ -57,6 +58,12 @@ const SelectHost = ({ setValue, register, errors }) => {
           </span>
           ?
         </p> */}
+        {hostValue && (
+          <Cross2Icon
+            className="absolute right-14 mt-3 h-5 w-5 cursor-pointer md:relative md:right-0 md:-ml-8 md:mt-3"
+            onClick={() => handleHostChange('')}
+          />
+        )}
         <Command className="rounded-none border md:w-2/5">
           <CommandInput
             name="host"

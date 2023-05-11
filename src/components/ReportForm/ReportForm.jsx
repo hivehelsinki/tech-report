@@ -20,7 +20,7 @@ const ReportForm = () => {
       description: '',
     },
   });
-  const onSubmit = async (data, event) => {
+  const onSubmit = async (data) => {
     data.description = data.description.replace(/\s\s+/g, ' ');
     if (data.description.trim().length < 10) {
       toast({

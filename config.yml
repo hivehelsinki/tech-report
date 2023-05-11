@@ -6,8 +6,8 @@ devices:
   - Cable
   - Other
 hosts:
-  - c1r1p2
   - c1r1p1
+  - c1r1p2
   - c1r1p3
   - c1r1p4
   - c1r1p5

@@ -22,7 +22,7 @@ const Description = ({ watch, register, errors }) => {
             placeholder="Type your description..."
             {...register('description', {
               required: 'This is required',
-              minLength: { value: 10, message: 'Minimum 10 characters' },
+              minLength: { value: 25, message: 'Minimum 25 characters' },
               maxLength: { value: 400, message: 'Maximum 400 characters' },
             })}
             className="w-full border border-b-4 px-4 py-6 outline-none"
@@ -30,7 +30,10 @@ const Description = ({ watch, register, errors }) => {
           <div
             className={`absolute -bottom-6 right-0 mb-2 mr-2 text-xs font-light
             ${
-              watch('description').length > 400 ? 'text-hred' : 'text-gray-400'
+              watch('description').length > 400 ||
+              watch('description').length < 25
+                ? 'text-hred'
+                : 'text-gray-400'
             }`}
           >
             {watch('description').length}/400

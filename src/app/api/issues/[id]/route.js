@@ -14,7 +14,7 @@ export async function GET(request, { params }) {
     });
   } catch (error) {
     console.log(`#########\n ${error.message} \n#########`);
-    return new Response('', { status: 500 });
+    return new Response({}, { status: 500 });
   }
 }
 
@@ -32,30 +32,13 @@ export async function PATCH(request, { params }) {
           closed: issue.status === 'resolved' ? new Date() : null,
         },
       });
-      return new Response('', { status: 200 });
+      return new Response({}, { status: 200 });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);
-      return new Response('', { status: 500 });
+      return new Response({}, { status: 500 });
     }
   } else {
     console.log(`#########\n UNAUTORISED \n#########`);
-    return new Response('', { status: 401 });
-  }
-}
-
-export async function DELETE(request, { params }) {
-  const user = await getCurrentUser(request);
-  if (user && user.admin) {
-    try {
-      await prisma.Issue.delete({
-        where: {
-          id: Number(params.id),
-        },
-      });
-      return new Response('', { status: 200 });
-    } catch (error) {
-      console.log(`#########\n ${error.message} \n#########`);
-      return new Response('', { status: 500 });
-    }
+    return new Response({}, { status: 401 });
   }
 }

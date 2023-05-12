@@ -1,6 +1,7 @@
 'use client';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { forwardRef, useEffect, useState } from 'react';
+import Label from '@components/Label';
 
 const SelectDevice = forwardRef(({ register, setValue }, ref) => {
   const [devicesList, setDevicesList] = useState([]);
@@ -35,12 +36,12 @@ const SelectDevice = forwardRef(({ register, setValue }, ref) => {
           required: true,
         })}
       >
-        <div className="flex h-6 w-6 items-center justify-center rounded-full border border-slate-400">
+        <div className="flex h-5 w-5 items-center justify-center rounded-full border border-slate-400">
           <RadioGroup.Indicator>
-            <div className="h-4 w-4 rounded-full bg-hyellow " />
+            <div className="h-3 w-3 rounded-full bg-hyellow " />
           </RadioGroup.Indicator>
         </div>
-        <label className="pl-4" htmlFor="r1">
+        <label className="pl-2" htmlFor="r1">
           {device}
         </label>
       </RadioGroup.Item>
@@ -49,14 +50,26 @@ const SelectDevice = forwardRef(({ register, setValue }, ref) => {
 
   return (
     <>
-      <label className="text-xl font-bold">Faulty device</label>
+      <Label>Faulty device</Label>
       <RadioGroup.Root
         name="device"
         className="mt-4 flex flex-col space-y-4 md:pl-5"
         onChange={(event) => handleDeviceChange(event)}
         defaultValue="iMac"
       >
-        {devices.length > 0 ? devices : <p>Loading...</p>}
+        {devices.length > 0 ? (
+          devices
+        ) : (
+          <div role="status" class="max-w-sm animate-pulse">
+            <div class="mb-4 h-2.5 w-48 rounded-full bg-gray-200 "></div>
+            <div class="mb-2.5 h-2.5 max-w-[360px] rounded-full bg-gray-200 "></div>
+            <div class="mb-2.5 h-2.5 rounded-full bg-gray-200 "></div>
+            <div class="mb-2.5 h-2.5 max-w-[330px] rounded-full bg-gray-200 "></div>
+            <div class="mb-2.5 h-2.5 max-w-[300px] rounded-full bg-gray-200 "></div>
+            <div class="h-2.5 max-w-[360px] rounded-full bg-gray-200 "></div>
+            <span class="sr-only">Loading...</span>
+          </div>
+        )}
       </RadioGroup.Root>
     </>
   );

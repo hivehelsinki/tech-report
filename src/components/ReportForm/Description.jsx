@@ -22,7 +22,7 @@ const Description = ({ watch, register, errors }) => {
             placeholder="Type your description..."
             {...register('description', {
               required: 'This is required',
-              minLength: { value: 10, message: 'Minimum 10 characters' },
+              minLength: { value: 25, message: 'Minimum 25 characters' },
               maxLength: { value: 400, message: 'Maximum 400 characters' },
             })}
             className="w-full border border-b-4 px-4 py-6 outline-none"

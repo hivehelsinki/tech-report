@@ -42,3 +42,20 @@ export async function PATCH(request, { params }) {
     return new Response('', { status: 401 });
   }
 }
+
+export async function DELETE(request, { params }) {
+  const user = await getCurrentUser(request);
+  if (user && user.admin) {
+    try {
+      await prisma.Issue.delete({
+        where: {
+          id: Number(params.id),
+        },
+      });
+      return new Response('', { status: 200 });
+    } catch (error) {
+      console.log(`#########\n ${error.message} \n#########`);
+      return new Response('', { status: 500 });
+    }
+  }
+}

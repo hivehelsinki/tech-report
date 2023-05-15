@@ -10,7 +10,7 @@
 
 ## About tech-report
 
-The `Tech-report` app provides Hive students with a platform to report technical issues related to the school's IT equipment. This tool enables staff members to efficiently address and follow up on these reported issues.
+The `tech-report` app provides Hive students with a platform to report technical issues related to the school's IT equipment. This tool enables staff members to efficiently address and follow up on these reported issues.
 
 The primary objective of this app is to guide students in correctly reporting technical problems and to maintain a record of these issues. In the near future, by tracking and documenting the reported incidents, the app will help identify any recurring problematic equipment. This information can be valuable for improving the school's IT infrastructure and ensuring a smoother experience for all students.
 
@@ -57,12 +57,13 @@ Create the .env file
 cp .env.sample .env
 ```
 
-| key       | desc                                       |
-| :-------- | :----------------------------------------- |
-| CAMPUS_ID | Your campus ID on the intranet             |
-| FT_UID    | Your 42API UID starting with `u-s4t2af`    |
-| FT_SECRET | Your 42API Secret starting with `s-s4t2af` |
-| SECRET    | Fill with random string                    |
+| key          | desc                                            |
+| :----------- | :---------------------------------------------- |
+| CAMPUS_ID    | Your campus ID on the intranet                  |
+| FT_UID       | Your 42API UID starting with `u-s4t2af`         |
+| FT_SECRET    | Your 42API Secret starting with `s-s4t2af`      |
+| SECRET       | Fill with random string                         |
+| NEXTAUTH_URL | URL of your app (e.g: https://report.domain.nl) |
 
 Run the application
 
@@ -72,7 +73,7 @@ npm run dev
 
 Now you can access you application on [localhost:3000](http://localhost:3000)
 
-<br/>
+<br/><br/>
 
 ## Docker
 
@@ -94,7 +95,7 @@ Access the container's logs
 docker logs -f tech-report
 ```
 
-<br/>
+<br/><br/>
 
 ## GDPR
 

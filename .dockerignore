@@ -7,3 +7,4 @@ prisma/dev.db
 .next
 .git
 .env
+.github

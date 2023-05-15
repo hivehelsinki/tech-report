@@ -1,7 +1,9 @@
+import Label from '@/components/Label';
+
 const Description = ({ watch, register, errors }) => {
   return (
-    <div className="mt-5 md:mt-10">
-      <label className="text-xl font-bold">Describe your problem</label>
+    <div className="mt-7 md:mt-10">
+      <Label>Describe your problem</Label>
       {errors.description && (
         <p className="mt-3 font-light text-hred md:px-5">
           {errors.description.message}
@@ -25,16 +27,17 @@ const Description = ({ watch, register, errors }) => {
               minLength: { value: 25, message: 'Minimum 25 characters' },
               maxLength: { value: 400, message: 'Maximum 400 characters' },
             })}
-            className="w-full border border-b-4 px-4 py-6 outline-none"
+            className="w-full border border-b-4 px-4 py-4 outline-none"
           />
           <div
-            className={`absolute -bottom-6 right-0 mb-2 mr-2 text-xs font-light
+            className={`absolute -bottom-6 right-0 mb-2 mr-2 text-xs font-light transition-opacity duration-300 ease-linear
             ${
               watch('description').length > 400 ||
               watch('description').length < 25
                 ? 'text-hred'
                 : 'text-gray-400'
-            }`}
+            }
+            ${watch('description').length === 0 ? 'opacity-0' : 'opacity-100'}`}
           >
             {watch('description').length}/400
           </div>

@@ -9,6 +9,7 @@ import {
 } from '@components/ui/command.jsx';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
+import Label from '@components/Label';
 
 // TODO: add logic when pressing enter to select host
 
@@ -43,8 +44,9 @@ const SelectHost = ({ setValue, register, errors }) => {
     if (source !== 'key') setOpen(false);
   };
   return (
-    <div className="mt-5 md:mt-10">
-      <label className="text-xl font-bold">Hostname</label>
+    <div className="mt-7 md:mt-10">
+      <Label>Hostname</Label>
+
       {errors.host && (
         <p className="mt-3 font-light text-hred md:px-5">
           {errors.host.message}

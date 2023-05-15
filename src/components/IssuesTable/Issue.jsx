@@ -4,9 +4,20 @@ import SelectStatus from './SelectStatus';
 import { ChevronDownIcon } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
+
 const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
   const [open, setOpen] = useState(false);
+
   const handleStatus = async (event) => {
+    if (event === null) return;
+    if (event === 'delete') {
+      const res = window.confirm('Are you sure?');
+      if (res === false) return;
+      await fetch(`/api/issues/${issue.id}`, { method: 'DELETE' });
+      setTriggerSorting((prev) => !prev);
+      setOpen(!open);
+    }
+
     const possibleStatus = ['open', 'ongoing', 'resolved'];
     if (possibleStatus.includes(event)) {
       await fetch(`/api/issues/${issue.id}`, {
@@ -24,6 +35,7 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
   };
 
   if (checkedResolved === false && issue.status === 'resolved') return null;
+
   return (
     <Accordion.Item value={issue.id} className=" text-hdark">
       <Accordion.Header className="group relative flex w-full items-center justify-between border-b px-5 py-4">

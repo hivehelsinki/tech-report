@@ -45,7 +45,7 @@ const IssuesTable = ({ user }) => {
               <CheckIcon className="h-5 w-5" />
             </Checkbox.Indicator>
           </Checkbox.Root>
-          <label className="leading-none text-slate-600">Resolved</label>
+          <label className="leading-none text-slate-600">Show resolved</label>
         </div>
       </div>
       <Accordion.Root type="single" collapsible className="w-full border">

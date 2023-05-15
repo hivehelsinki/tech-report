@@ -7,6 +7,6 @@ export async function GET() {
     return Response.json({ devices: ymlData.devices });
   } catch (error) {
     console.log(error);
-    return new Response({}, { status: 500 });
+    return new Response('', { status: 500 });
   }
 }

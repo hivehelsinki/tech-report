@@ -75,6 +75,15 @@ Now you can access you application on [localhost:3000](http://localhost:3000)
 
 <br/><br/>
 
+## Customization
+
+If you want to change the logo by the ones of your school, you change the following files:
+
+- `./public/landingPageLogo.svg`: The logo of your school that will be shown in the signIn page
+- `./public/logo.svg`: The logo in the navbar
+
+<br /><br />
+
 ## Docker
 
 Build docker image

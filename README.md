@@ -79,17 +79,20 @@ Now you can access you application on [localhost:3000](http://localhost:3000)
 Build docker image
 
 ```sh
-  docker build -t tech-report .
+docker build -t tech-report .
 ```
 
 Run the container
 
 ```sh
-docker run -v `pwd`/.env:/app/.env -p 3000:3000 --name=tech-report --rm tech-report
+docker run -v `pwd`/.env:/app/.env -p 3000:3000 --name tech-report --rm tech-report
 ```
 
-add `--detach` flag to run the container in the background<br />
-and run ` docker logs -f tech-report` to read the logs
+Access the container's logs
+
+```sh
+docker logs -f tech-report
+```
 
 <br/>
 

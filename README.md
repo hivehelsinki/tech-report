@@ -22,7 +22,6 @@ The primary objective of this app is to guide students in correctly reporting te
   <img src='https://github.com/hivehelsinki/tech-report/blob/main/.github/docs/screen02.png' width="800px" alt='reports' />
 </div>
 
-<br/><br/>
 
 ## Requirements
 

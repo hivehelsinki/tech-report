@@ -22,7 +22,6 @@ The primary objective of this app is to guide students in correctly reporting te
   <img src='https://github.com/hivehelsinki/tech-report/blob/main/.github/docs/screen02.png' width="800px" alt='reports' />
 </div>
 
-
 ## Requirements
 
 This app is developed to run with the 42 OAuth.
@@ -88,6 +87,12 @@ If you want to change the logo by the ones of your school, you change the follow
 
 - `./public/landingPageLogo.svg`: The logo of your school that will be shown in the signIn page
 - `./public/logo.svg`: The logo in the navbar
+
+
+You can edit the `config.yml` file to change:
+- the app title
+- faulty devices list
+- hosts list
 
 <br /><br />
 

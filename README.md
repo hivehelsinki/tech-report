@@ -14,10 +14,11 @@ The `tech-report` app provides Hive students with a platform to report technical
 
 The primary objective of this app is to guide students in correctly reporting technical problems and to maintain a record of these issues. In the near future, by tracking and documenting the reported incidents, the app will help identify any recurring problematic equipment. This information can be valuable for improving the school's IT infrastructure and ensuring a smoother experience for all students.
 
-![login](.github/docs/screen00.png)
-![form](.github/docs/screen01.png)
-![reports](.github/docs/screen01.png)
-
+<div style="display: flex">
+  <img src='https://github.com/hivehelsinki/tech-report/blob/main/.github/docs/screen00.png' alt='login' />
+  <img src='https://github.com/hivehelsinki/tech-report/blob/main/.github/docs/screen01.png' alt='form' />
+  <img src='https://github.com/hivehelsinki/tech-report/blob/main/.github/docs/screen02.png' alt='reports' />
+</div>
 
 <br/><br/>
 

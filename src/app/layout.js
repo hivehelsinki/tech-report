@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
   const appName = ymlData.app_name;
   return (
     <html lang="en">
-      <body>
+      <body className="antialiased">
         <Toaster />
         {user && <Navbar user={user} appName={appName} />}
         <div>{children}</div>

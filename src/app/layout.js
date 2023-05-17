@@ -8,7 +8,7 @@ import yaml from 'js-yaml';
 const ymlData = yaml.load(fs.readFileSync(`./config.yml`, 'utf8'));
 
 export const metadata = {
-  title: 'Report issues',
+  title: `${ymlData.app_name} | Report issues`,
   description: 'Report technical issues you encounter on the school equipment',
 };
 

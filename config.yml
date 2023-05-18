@@ -1,4 +1,5 @@
-app_name: Karen
+app_name: Bocal
+hide_footer: false
 devices:
   - iMac
   - Keyboard

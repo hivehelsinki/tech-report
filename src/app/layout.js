@@ -21,7 +21,7 @@ export default async function RootLayout({ children }) {
         <Toaster />
         {user && <Navbar user={user} appName={appName} />}
         <div>{children}</div>
-        {user && <Footer />}
+        {user && !ymlData.hide_footer && <Footer />}
       </body>
     </html>
   );

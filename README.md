@@ -88,8 +88,8 @@ If you want to change the logo by the ones of your school, you change the follow
 - `./public/landingPageLogo.svg`: The logo of your school that will be shown in the signIn page
 - `./public/logo.svg`: The logo in the navbar
 
-
 You can edit the `config.yml` file to change:
+
 - the app title
 - faulty devices list
 - hosts list

@@ -1,21 +1,19 @@
-import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { tv } from 'tailwind-variants';
 
-const badgeVariant = cva(
-  'w-3 h-3 rounded-full transition duration-200 md:cursor-pointer',
-  {
-    variants: {
-      variant: {
-        open: 'border border-slate-300',
-        ongoing: 'bg-orange-400',
-        resolved: 'bg-green-400',
-      },
+const badgeVariant = tv({
+  base: 'w-3 h-3 rounded-full transition duration-200 md:cursor-pointer',
+  variants: {
+    variant: {
+      open: 'border border-slate-300',
+      ongoing: 'bg-orange-400',
+      resolved: 'bg-green-400',
     },
-    defaultVariants: {
-      variant: 'open',
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: 'open',
+  },
+});
 
 const Badge = ({ variant, className }) => {
   return (

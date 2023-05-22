@@ -1,7 +1,7 @@
-import { cva } from 'class-variance-authority';
-import { cn } from '@/lib/utils';
+import { tv } from 'tailwind-variants';
 
-const labelVariants = cva('font-bold tracking-wide', {
+const labelVariants = tv({
+  base: 'font-bold tracking-wide',
   variants: {
     size: {
       sm: 'text-sm',
@@ -15,7 +15,7 @@ const labelVariants = cva('font-bold tracking-wide', {
 
 const Label = ({ children, className, size }) => {
   return (
-    <label className={cn(labelVariants({ className, size }))}>{children}</label>
+    <label className={labelVariants({ className, size })}>{children}</label>
   );
 };
 

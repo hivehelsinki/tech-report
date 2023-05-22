@@ -5,27 +5,28 @@ async function send_payload(uri, payload) {
   });
 }
 
-export async function slack_notification(type, ...args) {
-    const SlackURI = process.env.SLACK_URL;
-    if (!SlackURI) return ;
-    
-    if (type === 'add') {
-      var payload = {
-        "fallback": "New report added",
-        "blocks": [{
-          "type": "section",
-          "text": {
-            "type": "mrkdwn",
-            "text": `:heavy_plus_sign: new report added by *${args[0]}* about *${args[1]}* \`\`\`${args[2]}\`\`\``
-          }
-        }]
-      }
-    }
+export async function slack_notification(type, data) {
+  const SlackURI = process.env.SLACK_URL;
+  if (!SlackURI) return;
 
-    const res = await send_payload(SlackURI, JSON.stringify(payload));
-
-    return {
-        status: res.status,
-        body: await res.text(),
+  if (type === 'add') {
+    var payload = {
+      attachments: [
+        {
+          pretext: `*New report created by ${data.login}*`,
+          fallback: `New report created by ${data.login}`,
+          color: "#FADE4B",
+          "title": `${data.host} - ${data.device}`,
+          "text": data.description,
+        }
+      ],
     };
+  }
+
+  const res = await send_payload(SlackURI, JSON.stringify(payload));
+
+  return {
+    status: res.status,
+    body: await res.text(),
+  };
 }

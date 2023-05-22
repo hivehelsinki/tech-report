@@ -85,7 +85,16 @@ export async function POST(request) {
           },
         },
       });
-      await slack_notification("add", user.login, issue.host, issue.description)
+      await slack_notification(
+        'add',
+        {
+          login: user.login,
+          host: issue.host,
+          device: issue.device,
+          description: issue.description
+        }
+        
+      );
       return new Response('', { status: 201 });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);

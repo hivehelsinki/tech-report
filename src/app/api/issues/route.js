@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/db.js';
 import { getCurrentUser } from '@/lib/session';
+import { slack_notification } from '@/lib/slack';
 import fs from 'fs';
 import yaml from 'js-yaml';
 const ymlData = yaml.load(fs.readFileSync(`./config.yml`, 'utf8'));
@@ -84,6 +85,7 @@ export async function POST(request) {
           },
         },
       });
+      await slack_notification("add", user.login, issue.host, issue.description)
       return new Response('', { status: 201 });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);

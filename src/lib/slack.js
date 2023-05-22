@@ -15,10 +15,10 @@ export async function slack_notification(type, data) {
         {
           pretext: `*New report created by ${data.login}*`,
           fallback: `New report created by ${data.login}`,
-          color: "#FADE4B",
-          "title": `${data.host} - ${data.device}`,
-          "text": data.description,
-        }
+          color: '#FADE4B',
+          title: `${data.host} - ${data.device}`,
+          text: data.description,
+        },
       ],
     };
   }

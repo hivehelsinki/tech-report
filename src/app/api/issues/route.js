@@ -85,7 +85,7 @@ export async function POST(request) {
           },
         },
       });
-      await slack_notification('add', {
+      await slack_notification('insert', {
         login: user.login,
         host: issue.host,
         device: issue.device,

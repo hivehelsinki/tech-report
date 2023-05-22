@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/db.js';
 import { getCurrentUser } from '@/lib/session';
+import { slack_notification } from '@/lib/slack';
 
 // TODO: checking users could be an option, let it uncheck for now so can be pulled by other services (slack notif?)
 export async function GET(request, { params }) {
@@ -23,6 +24,7 @@ export async function PATCH(request, { params }) {
   if (user && user.admin) {
     try {
       const issue = await request.json();
+
       await prisma.Issue.update({
         where: {
           id: Number(params.id),
@@ -32,6 +34,17 @@ export async function PATCH(request, { params }) {
           closed: issue.status === 'resolved' ? new Date() : null,
         },
       });
+
+      if (issue.status === 'resolved') {
+        slack_notification('update', {
+          login: user.login,
+          host: issue.host,
+          device: issue.device,
+          description: issue.description,
+          status: issue.status,
+        });
+      }
+
       return new Response('', { status: 200 });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);

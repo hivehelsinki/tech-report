@@ -4,6 +4,7 @@ import Button from '@components/Button';
 import Badge from '@components/Badge';
 // import SelectStatus from '@/components/IssuesTable/SelectStatus';
 import { toast } from '@components/ui/use-toast';
+import { slack_notification } from '@/lib/slack';
 
 export default function Home() {
   if (process.env.NODE_ENV === 'production') {
@@ -58,12 +59,13 @@ export default function Home() {
           </div>
         </div>
         <div className="basis-full md:basis-1/2">
-          <h3 className="mb-3 text-xl font-bold">Lorem</h3>
+          <h3 className="mb-3 text-xl font-bold">Slack notification</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex dolor
-            consequatur recusandae, possimus distinctio voluptas quos reiciendis
-            cum accusantium ab. Asperiores a excepturi corporis perferendis.
-            Ipsa beatae id fugiat nobis!
+          <Button
+              onClick={() => { slack_notification(); }}
+            >
+              Error
+            </Button>
           </p>
         </div>
         <div className="basis-full md:basis-1/2">

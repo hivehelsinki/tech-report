@@ -70,6 +70,7 @@ cp .env.sample .env
 | FT_SECRET    | Your 42API Secret starting with `s-s4t2af`      |
 | SECRET       | Fill with random string                         |
 | NEXTAUTH_URL | URL of your app (e.g: https://report.domain.nl) |
+| SLACK_URL    | Slack incoming webhook URI (remove if disable)  |
 
 Run the application
 

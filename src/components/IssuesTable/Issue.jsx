@@ -23,6 +23,7 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
       await fetch(`/api/issues/${issue.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
+          ...issue,
           status: event,
         }),
         headers: {

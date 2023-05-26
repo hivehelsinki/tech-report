@@ -34,7 +34,7 @@ const issueUpdate = async (prisma, params, issue) => {
 export async function PATCH(request, { params }) {
   const user = await getCurrentUser(request);
   const issue = await request.json();
-  const userCan = ['open', 'resolved'];
+  const userCan = ['resolved'];
 
   if (userCan.includes(issue.status)) {
     if (user && user.id === issue.user_id) {

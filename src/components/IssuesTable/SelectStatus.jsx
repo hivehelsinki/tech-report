@@ -10,7 +10,7 @@ import Badge from '../Badge';
 
 const SelectStatus = ({ user, status, handleStatus, open, setOpen }) => {
   const adminStatus = ['open', 'ongoing', 'resolved'];
-  const userStatus = ['open', 'resolved'];
+  const userStatus = ['resolved'];
 
   return (
     <div className="flex items-center space-x-4">

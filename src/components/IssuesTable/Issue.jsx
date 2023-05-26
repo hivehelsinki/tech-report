@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import * as Accordion from '@radix-ui/react-accordion';
-import SelectStatus from './SelectStatus';
+import { useState } from 'react';
 import { ChevronDownIcon } from 'lucide-react';
 import moment from 'moment';
-import { useState } from 'react';
+import * as Accordion from '@radix-ui/react-accordion';
+import SelectStatus from './SelectStatus';
 
 const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
   const [open, setOpen] = useState(false);

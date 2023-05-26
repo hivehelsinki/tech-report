@@ -19,32 +19,46 @@ export async function GET(request, { params }) {
   }
 }
 
+const issueUpdate = async (prisma, params, issue) => {
+  return prisma.Issue.update({
+    where: {
+      id: Number(params.id),
+    },
+    data: {
+      status: issue.status,
+      closed: issue.status === 'resolved' ? new Date() : null,
+    },
+  });
+};
+
 export async function PATCH(request, { params }) {
   const user = await getCurrentUser(request);
+  const issue = await request.json();
+  const userCan = ['open', 'resolved'];
+
+  if (userCan.includes(issue.status)) {
+    if (user && user.id === issue.user_id) {
+      try {
+        await issueUpdate(prisma, params, issue);
+        if (issue.status === 'resolved') {
+          slack_notification('update', { ...issue });
+        }
+        return new Response('', { status: 200 });
+      } catch (error) {
+        console.log(`#########\n ${error.message} \n#########`);
+        return new Response('', { status: 500 });
+      }
+    } else {
+      return new Response('', { status: 401 });
+    }
+  }
+
   if (user && user.admin) {
     try {
-      const issue = await request.json();
-
-      await prisma.Issue.update({
-        where: {
-          id: Number(params.id),
-        },
-        data: {
-          status: issue.status,
-          closed: issue.status === 'resolved' ? new Date() : null,
-        },
-      });
-
+      await issueUpdate(prisma, params, issue);
       if (issue.status === 'resolved') {
-        slack_notification('update', {
-          login: user.login,
-          host: issue.host,
-          device: issue.device,
-          description: issue.description,
-          status: issue.status,
-        });
+        slack_notification('update', { ...issue });
       }
-
       return new Response('', { status: 200 });
     } catch (error) {
       console.log(`#########\n ${error.message} \n#########`);

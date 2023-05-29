@@ -1,10 +1,15 @@
 import './globals.css';
-import Navbar from '../components/Navbar';
-import Footer from '@/components/Footer';
-import { Toaster } from '@components/ui/toaster';
-import { getCurrentUser } from '@/lib/session';
+
 import fs from 'fs';
 import yaml from 'js-yaml';
+
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { Toaster } from '@components/ui/toaster';
+
+import { Providers } from './providers';
+import { getCurrentUser } from '@/lib/session';
+
 const ymlData = yaml.load(fs.readFileSync(`./config.yml`, 'utf8'));
 
 export const metadata = {
@@ -17,11 +22,13 @@ export default async function RootLayout({ children }) {
   const appName = ymlData.app_name;
   return (
     <html lang="en">
-      <body className="antialiased">
-        <Toaster />
-        {user && <Navbar user={user} appName={appName} />}
-        <div>{children}</div>
-        {user && !ymlData.hide_footer && <Footer />}
+      <body className="antialiased dark:bg-neutral-900">
+        <Providers>
+          <Toaster />
+          {user && <Navbar user={user} appName={appName} />}
+          <div>{children}</div>
+          {user && !ymlData.hide_footer && <Footer />}
+        </Providers>
       </body>
     </html>
   );

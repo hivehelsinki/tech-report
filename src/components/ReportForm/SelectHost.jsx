@@ -66,7 +66,7 @@ const SelectHost = ({ setValue, register, errors }) => {
             onClick={() => handleHostChange('')}
           />
         )}
-        <Command className="rounded-none border md:w-2/5">
+        <Command className="rounded-none border dark:bg-stone-950 md:w-2/5">
           <CommandInput
             name="host"
             placeholder="Type a host or search..."

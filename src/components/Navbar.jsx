@@ -6,21 +6,23 @@ import logo from '../../public/logo.svg';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import Avatar from './Avatar';
+import ToggleTheme from '@/components/toggletheme';
 import { signOut } from 'next-auth/react';
 
 // TODO: accentuate the current position in navbar
 //const path = usePathname();
 const Navbar = ({ user, appName }) => {
   return (
-    <header className="h-16 w-full text-hdark shadow">
+    <header className="h-16 w-full text-hdark shadow dark:bg-stone-950 dark:text-neutral-100">
       <div className="container h-full">
         <nav className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center justify-between">
             <div className="inline-flex cursor-pointer gap-2 ">
-              <Image src={logo} alt="school logo" width={28} height={28} />
+              <Image src="/logo.svg" alt="school logo" width={28} height={28} />
               <span className="bold text-xl font-bold">{appName}</span>
             </div>
           </Link>
+          <ToggleTheme />
           <div className="md:hidden">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>

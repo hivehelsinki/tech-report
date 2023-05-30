@@ -31,7 +31,8 @@ const Navbar = ({ user, appName }) => {
               <span className="bold text-xl font-bold">{appName}</span>
             </div>
           </Link>
-          <div className="md:hidden">
+          <div className="flex gap-3 md:hidden">
+            <ToggleTheme />
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
                 <HamburgerMenuIcon className="h-7 w-7" />

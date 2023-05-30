@@ -39,8 +39,8 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
 
   return (
     <Accordion.Item value={issue.id} className=" text-hdark">
-      <Accordion.Header className="group relative flex w-full items-center justify-between border-b px-5 py-4">
-        <Accordion.Trigger className="group flex w-full items-center justify-between">
+      <Accordion.Header className="group relative flex w-full items-center justify-between border-b px-5 py-4 dark:border-gray-600">
+        <Accordion.Trigger className="group flex w-full items-center justify-between dark:text-gray-300">
           <div className="inline-flex w-2/5 items-center gap-8">
             <p className="min-w-[65px]">{issue.host}</p> <p>{issue.device}</p>
           </div>
@@ -56,7 +56,7 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
           />
         </div>
       </Accordion.Header>
-      <Accordion.Content className="border-b bg-slate-50 px-2 py-6">
+      <Accordion.Content className="border-b bg-slate-50 px-2 py-6 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
         <div className="md:pl-20">
           <div className="text-md">
             {issue.description.split('\n').map((line, index) => {

@@ -5,7 +5,7 @@ const badgeVariant = tv({
   base: 'w-3 h-3 rounded-full transition duration-200 md:cursor-pointer',
   variants: {
     variant: {
-      open: 'border border-slate-300',
+      open: 'border border-slate-300 dark:border-slate-500',
       ongoing: 'bg-orange-400',
       resolved: 'bg-green-400',
     },
@@ -24,7 +24,9 @@ const Badge = ({ variant, className }) => {
       )}
     >
       <span className={badgeVariant({ variant })}></span>
-      <span className="hidden md:block">{variant || 'open'}</span>
+      <span className="hidden dark:text-gray-400 md:block">
+        {variant || 'open'}
+      </span>
     </div>
   );
 };

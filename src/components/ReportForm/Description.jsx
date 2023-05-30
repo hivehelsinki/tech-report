@@ -10,7 +10,7 @@ const Description = ({ watch, register, errors }) => {
         </p>
       )}
       <div className="mt-4 flex flex-col space-y-4 md:flex-row-reverse md:items-center md:justify-end md:space-y-0 md:pl-5 ">
-        <p className="text-sm md:ml-12 md:w-1/3">
+        <p className="text-sm dark:text-gray-300 md:ml-12 md:w-1/3">
           Please try to give a concise and meaningful description!
           <span className="mt-2 block text-sm font-light italic">
             e.g. “When I try to install node.js via brew a pop up notifies me

@@ -1,28 +1,36 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../../public/logo.svg';
+import { signOut } from 'next-auth/react';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
 import Avatar from './Avatar';
 import ToggleTheme from '@/components/toggletheme';
-import { signOut } from 'next-auth/react';
 
-// TODO: accentuate the current position in navbar
-//const path = usePathname();
 const Navbar = ({ user, appName }) => {
   return (
-    <header className="h-16 w-full text-hdark shadow dark:bg-stone-950 dark:text-neutral-100">
+    <header className="h-16 w-full border-b text-hdark dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
       <div className="container h-full">
         <nav className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center justify-between">
             <div className="inline-flex cursor-pointer gap-2 ">
-              <Image src="/logo.svg" alt="school logo" width={28} height={28} />
+              <svg
+                version="1.2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 37 37"
+                width="28"
+                height="28"
+                className="fill-[#383838] dark:fill-gray-300"
+              >
+                <path
+                  id="Layer"
+                  d="m18.5 37c-10.2 0-18.5-8.3-18.5-18.5 0-10.2 8.3-18.5 18.5-18.5 10.2 0 18.5 8.3 18.5 18.5 0 10.2-8.3 18.5-18.5 18.5zm9-29.4h-4.3v8.8h-9.5v-8.8h-4.2v21.8h4.2v-9h9.5v9h4.3z"
+                />
+              </svg>
               <span className="bold text-xl font-bold">{appName}</span>
             </div>
           </Link>
-          <ToggleTheme />
           <div className="md:hidden">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
@@ -77,18 +85,21 @@ const Navbar = ({ user, appName }) => {
                 </li>
               )}
             </ul>
-            <div className="inline-flex items-center gap-3">
-              <Avatar user={user} />
-              <button
-                onClick={(event) => {
-                  event.preventDefault();
-                  signOut({
-                    callbackUrl: `${window.location.origin}/login`,
-                  });
-                }}
-              >
-                <ExitIcon className="h-6 w-6 cursor-pointer" />
-              </button>
+            <div className="inline-flex items-center gap-5">
+              <ToggleTheme />
+              <div className="inline-flex items-center gap-3">
+                <Avatar user={user} />
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    signOut({
+                      callbackUrl: `${window.location.origin}/login`,
+                    });
+                  }}
+                >
+                  <ExitIcon className="h-6 w-6 cursor-pointer" />
+                </button>
+              </div>
             </div>
           </div>
         </nav>

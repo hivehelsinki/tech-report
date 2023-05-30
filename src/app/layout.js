@@ -22,7 +22,7 @@ export default async function RootLayout({ children }) {
   const appName = ymlData.app_name;
   return (
     <html lang="en">
-      <body className="antialiased dark:bg-neutral-900">
+      <body className="antialiased dark:bg-gray-900">
         <Providers>
           <Toaster />
           {user && <Navbar user={user} appName={appName} />}

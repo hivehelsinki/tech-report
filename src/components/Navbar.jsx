@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
+
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-import Avatar from './Avatar';
+import Avatar from '@/components/Avatar';
+import Logo from '@/components/Logo';
 import ToggleTheme from '@/components/toggletheme';
 
 const Navbar = ({ user, appName }) => {
@@ -14,21 +16,11 @@ const Navbar = ({ user, appName }) => {
       <div className="container h-full">
         <nav className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center justify-between">
-            <div className="inline-flex cursor-pointer gap-2 ">
-              <svg
-                version="1.2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 37 37"
-                width="28"
-                height="28"
-                className="fill-[#383838] dark:fill-gray-300"
-              >
-                <path
-                  id="Layer"
-                  d="m18.5 37c-10.2 0-18.5-8.3-18.5-18.5 0-10.2 8.3-18.5 18.5-18.5 10.2 0 18.5 8.3 18.5 18.5 0 10.2-8.3 18.5-18.5 18.5zm9-29.4h-4.3v8.8h-9.5v-8.8h-4.2v21.8h4.2v-9h9.5v9h4.3z"
-                />
-              </svg>
-              <span className="bold text-xl font-bold">{appName}</span>
+            <div className="inline-flex cursor-pointer items-center gap-4">
+              <Logo />
+              <span className="text-xl font-semibold text-gray-950 dark:text-gray-100">
+                {appName}
+              </span>
             </div>
           </Link>
           <div className="flex gap-3 md:hidden">

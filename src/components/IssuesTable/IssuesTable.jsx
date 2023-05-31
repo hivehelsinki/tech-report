@@ -38,7 +38,7 @@ const IssuesTable = ({ user }) => {
       <div className="mb-5 flex w-full flex-row justify-end gap-5">
         <div className="flex items-center gap-2">
           <Checkbox.Root
-            className="flex h-4 w-4 appearance-none items-center justify-center border border-slate-400 bg-white outline-none dark:bg-gray-950"
+            className="flex h-4 w-4 appearance-none items-center justify-center border border-slate-400 bg-white outline-none dark:bg-gray-900"
             onCheckedChange={(event) => setCheckedResolved(event)}
           >
             <Checkbox.Indicator>

@@ -4,7 +4,7 @@ const statusVariant = tv({
   base: 'cursor-pointer hover:font-semibold',
   variants: {
     status: {
-      open: 'hover:text-slate-500',
+      open: 'hover:text-slate-500 dark:hover:text-slate-400',
       ongoing: 'hover:text-horange',
       resolved: 'hover:text-hgreen',
     },

@@ -8,7 +8,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import Avatar from '@/components/Avatar';
 import Logo from '@/components/Logo';
-import ToggleTheme from '@/components/toggletheme';
+import ToggleTheme from '@/components/ToggleTheme';
 
 const Navbar = ({ user, appName }) => {
   return (

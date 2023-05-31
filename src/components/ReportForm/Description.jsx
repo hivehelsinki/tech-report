@@ -9,8 +9,8 @@ const Description = ({ watch, register, errors }) => {
           {errors.description.message}
         </p>
       )}
-      <div className="mt-4 flex flex-col space-y-4 md:flex-row-reverse md:items-center md:justify-end md:space-y-0 md:pl-5">
-        <p className="text-sm md:ml-12 md:w-1/3">
+      <div className="mt-4 flex flex-col space-y-4 md:flex-row-reverse md:items-center md:justify-end md:space-y-0 md:pl-5 ">
+        <p className="text-sm dark:text-gray-300 md:ml-12 md:w-1/3">
           Please try to give a concise and meaningful description!
           <span className="mt-2 block text-sm font-light italic">
             e.g. “When I try to install node.js via brew a pop up notifies me
@@ -27,7 +27,7 @@ const Description = ({ watch, register, errors }) => {
               minLength: { value: 25, message: 'Minimum 25 characters' },
               maxLength: { value: 400, message: 'Maximum 400 characters' },
             })}
-            className="w-full border border-b-4 px-4 py-4 outline-none"
+            className="w-full border border-b-4 px-4 py-4 outline-none dark:bg-stone-950"
           />
           <div
             className={`absolute -bottom-6 right-0 mb-2 mr-2 text-xs font-light transition-opacity duration-300 ease-linear

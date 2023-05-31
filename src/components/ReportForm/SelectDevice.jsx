@@ -38,7 +38,7 @@ const SelectDevice = forwardRef(({ register, setValue }, ref) => {
       >
         <div className="flex h-5 w-5 items-center justify-center rounded-full border border-slate-400">
           <RadioGroup.Indicator>
-            <div className="h-3 w-3 rounded-full bg-hyellow " />
+            <div className="h-3 w-3 rounded-full bg-hyellow dark:bg-gray-300 " />
           </RadioGroup.Indicator>
         </div>
         <label className="pl-2" htmlFor="r1">

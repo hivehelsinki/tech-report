@@ -3,7 +3,7 @@ import Link from 'next/link';
 const Footer = () => {
   return (
     <footer className="mt-5 inline-flex w-full justify-center pb-3 md:mt-24">
-      <p className="text-sm text-slate-700">
+      <p className="text-sm text-slate-700 dark:text-gray-400">
         Developed by{' '}
         <Link
           className="underline underline-offset-4"

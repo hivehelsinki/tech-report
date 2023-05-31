@@ -1,30 +1,30 @@
 'use client';
 
-// import Image from 'next/image';
 import Link from 'next/link';
-// import logo from '../../public/logo.svg';
-import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import Avatar from './Avatar';
-import Logo from './Logo';
 import { signOut } from 'next-auth/react';
 
-// TODO: accentuate the current position in navbar
-//const path = usePathname();
+import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+import Avatar from '@/components/Avatar';
+import Logo from '@/components/Logo';
+import ToggleTheme from '@/components/toggletheme';
+
 const Navbar = ({ user, appName }) => {
   return (
-    <header className="h-16 w-full text-hdark shadow">
+    <header className="h-16 w-full border-b text-hdark dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
       <div className="container h-full">
         <nav className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center justify-between">
             <div className="inline-flex cursor-pointer items-center gap-4">
               <Logo />
-              <span className="text-xl font-semibold text-black">
+              <span className="text-xl font-semibold text-gray-950 dark:text-gray-100">
                 {appName}
               </span>
             </div>
           </Link>
-          <div className="md:hidden">
+          <div className="flex gap-3 md:hidden">
+            <ToggleTheme />
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
                 <HamburgerMenuIcon className="h-7 w-7" />
@@ -78,18 +78,21 @@ const Navbar = ({ user, appName }) => {
                 </li>
               )}
             </ul>
-            <div className="inline-flex items-center gap-3">
-              <Avatar user={user} />
-              <button
-                onClick={(event) => {
-                  event.preventDefault();
-                  signOut({
-                    callbackUrl: `${window.location.origin}/login`,
-                  });
-                }}
-              >
-                <ExitIcon className="h-6 w-6 cursor-pointer" />
-              </button>
+            <div className="inline-flex items-center gap-5">
+              <ToggleTheme />
+              <div className="inline-flex items-center gap-3">
+                <Avatar user={user} />
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    signOut({
+                      callbackUrl: `${window.location.origin}/login`,
+                    });
+                  }}
+                >
+                  <ExitIcon className="h-6 w-6 cursor-pointer" />
+                </button>
+              </div>
             </div>
           </div>
         </nav>

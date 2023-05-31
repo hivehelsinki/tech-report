@@ -1,11 +1,12 @@
 'use client';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../../public/logo.svg';
+// import logo from '../../public/logo.svg';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import Avatar from './Avatar';
+import Logo from './Logo';
 import { signOut } from 'next-auth/react';
 
 // TODO: accentuate the current position in navbar
@@ -16,9 +17,11 @@ const Navbar = ({ user, appName }) => {
       <div className="container h-full">
         <nav className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center justify-between">
-            <div className="inline-flex cursor-pointer gap-2 ">
-              <Image src={logo} alt="school logo" width={28} height={28} />
-              <span className="bold text-xl font-bold">{appName}</span>
+            <div className="inline-flex cursor-pointer items-center gap-4">
+              <Logo />
+              <span className="text-xl font-semibold text-black">
+                {appName}
+              </span>
             </div>
           </Link>
           <div className="md:hidden">

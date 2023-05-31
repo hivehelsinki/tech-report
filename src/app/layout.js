@@ -10,7 +10,7 @@ import { Toaster } from '@components/ui/toaster';
 import { Providers } from './providers';
 import { getCurrentUser } from '@/lib/session';
 
-const ymlData = yaml.load(fs.readFileSync(`./config.yml`, 'utf8'));
+const ymlData = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
 
 export const metadata = {
   title: `${ymlData.app_name} | Report issues`,

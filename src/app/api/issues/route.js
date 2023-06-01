@@ -3,12 +3,12 @@ import { getCurrentUser } from '@/lib/session';
 import { slack_notification } from '@/lib/slack';
 import fs from 'fs';
 import yaml from 'js-yaml';
-const ymlData = yaml.load(fs.readFileSync(`./config.yml`, 'utf8'));
+const ymlData = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
 
 export async function GET() {
   const user = await getCurrentUser();
   if (!user) {
-    console.log(`#########\n UNAUTORISED \n#########`);
+    console.log('#########\n UNAUTORISED \n#########');
     return new Response('', { status: 401 });
   } else {
     try {
@@ -64,7 +64,7 @@ export async function GET() {
 export async function POST(request) {
   const user = await getCurrentUser();
   if (!user) {
-    console.log(`#########\n UNAUTORISED \n#########`);
+    console.log('#########\n UNAUTORISED \n#########');
     return new Response('', { status: 401 });
   } else {
     try {

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
-const ymlData = yaml.load(fs.readFileSync(`./config.yml`, 'utf8'));
+const ymlData = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
 
 export async function GET() {
   try {

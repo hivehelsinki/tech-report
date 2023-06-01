@@ -51,7 +51,7 @@ export async function PATCH(request, { params }) {
       return new Response('', { status: 500 });
     }
   } else {
-    console.log(`#########\n UNAUTORISED \n#########`);
+    console.log('#########\n UNAUTORISED \n#########');
     return new Response('', { status: 401 });
   }
 }

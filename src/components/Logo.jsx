@@ -1,4 +1,4 @@
-const Logo = ({}) => {
+const Logo = () => {
   return (
     <svg
       version="1.1"

@@ -29,8 +29,8 @@ const SelectStatus = ({ user, status, handleStatus, open, setOpen }) => {
             }
           >
             <div className="flex flex-col gap-2">
-              {availableStatus.map((status, id) => (
-                <StatusItem key={id} status={status} />
+              {availableStatus.map((elem, id) => (
+                <StatusItem key={id} status={elem} />
               ))}
             </div>
 

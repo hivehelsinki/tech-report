@@ -32,7 +32,7 @@ const Navbar = ({ user, appName }) => {
               <DropdownMenu.Portal>
                 <DropdownMenu.Content
                   sideOffset={8}
-                  className="mr-6 flex-col justify-between space-y-5 border bg-white px-8 py-5 drop-shadow-xl md:hidden"
+                  className="mr-6 flex-col justify-between space-y-5 border bg-white px-8 py-5 drop-shadow-xl dark:border-gray-900 dark:bg-gray-800 md:hidden"
                 >
                   <DropdownMenu.Item className="outline-none hover:cursor-pointer hover:underline hover:underline-offset-4">
                     <Link href="/issues">Reports</Link>

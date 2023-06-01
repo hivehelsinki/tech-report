@@ -10,17 +10,17 @@ export default function Home() {
     notFound();
   }
 
-  function handleClickToast() {
+  const handleClickToast = () => {
     toast({ title: 'Hello', description: 'Description' });
-  }
+  };
 
-  function handleDestructiveClickToast() {
+  const handleDestructiveClickToast = () => {
     toast({
       title: 'Hello',
       description: 'Description',
       variant: 'destructive',
     });
-  }
+  };
 
   return (
     <main className="p-2">

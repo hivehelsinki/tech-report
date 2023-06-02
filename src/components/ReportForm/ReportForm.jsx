@@ -54,18 +54,16 @@ const ReportForm = () => {
     setProcessing(false);
   };
   return (
-    <>
-      <form className="my-7" onSubmit={handleSubmit(onSubmit)}>
-        <SelectDevice setValue={setValue} register={register} />
-        <SelectHost setValue={setValue} register={register} errors={errors} />
-        <Description watch={watch} register={register} errors={errors} />
-        <div className="mt-8 flex justify-center md:mt-14 md:justify-start md:pl-5">
-          <Button type={'submit'} disabled={processing}>
-            Submit
-          </Button>
-        </div>
-      </form>
-    </>
+    <form className="my-7" onSubmit={handleSubmit(onSubmit)}>
+      <SelectDevice setValue={setValue} register={register} />
+      <SelectHost setValue={setValue} register={register} errors={errors} />
+      <Description watch={watch} register={register} errors={errors} />
+      <div className="mt-8 flex justify-center md:mt-14 md:justify-start md:pl-5">
+        <Button type={'submit'} disabled={processing}>
+          Submit
+        </Button>
+      </div>
+    </form>
   );
 };
 

@@ -30,9 +30,9 @@ const RenderIssues = ({ user, checkedResolved }) => {
         />
       );
     });
-  } else {
-    return;
   }
+
+  return null;
 };
 
 const IssuesTable = ({ user }) => {

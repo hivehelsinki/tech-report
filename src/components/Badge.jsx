@@ -23,7 +23,7 @@ const Badge = ({ variant, className }) => {
         className
       )}
     >
-      <span className={badgeVariant({ variant })}></span>
+      <span className={badgeVariant({ variant })} />
       <span className="hidden dark:text-gray-400 md:block">
         {variant || 'open'}
       </span>

@@ -9,7 +9,7 @@ export async function slack_notification(type, data) {
   const SlackURI = process.env.SLACK_URL;
   if (!SlackURI) return;
 
-  let payload;
+  let payload = {};
 
   if (type === 'insert') {
     payload = {

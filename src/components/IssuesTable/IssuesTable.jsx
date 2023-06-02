@@ -8,6 +8,7 @@ import Issue from './Issue.jsx';
 const RenderIssues = ({ user, checkedResolved }) => {
   const [issues, setIssues] = useState([]);
   const [triggerSorting, setTriggerSorting] = useState(false);
+
   useEffect(() => {
     const fetchInfo = async () => {
       const data = await fetch('/api/issues');
@@ -17,7 +18,7 @@ const RenderIssues = ({ user, checkedResolved }) => {
     fetchInfo();
   }, [triggerSorting]);
 
-  if (issues.length > 0)
+  if (issues.length > 0) {
     return issues.map((issue) => {
       return (
         <Issue
@@ -29,6 +30,9 @@ const RenderIssues = ({ user, checkedResolved }) => {
         />
       );
     });
+  } else {
+    return;
+  }
 };
 
 const IssuesTable = ({ user }) => {

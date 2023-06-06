@@ -27,7 +27,7 @@ export async function slack_notification(type, data) {
           fallback: `Report updated by ${data.login}`,
           color: '#FADE4B',
           title: `${data.device} at ${data.host}`,
-          text: `Status set to \`${data.status}\`\n\n~${data.description}~`,
+          text: `Status set to \`${data.status}\`\n\n${data.description}`,
         },
       ],
     };

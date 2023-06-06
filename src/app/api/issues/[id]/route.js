@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/db.js';
 import { getCurrentUser } from '@/lib/session';
-import { slack_notification } from '@/lib/slack';
+import { notification } from '@/lib/notification';
 
 // TODO: checking users could be an option, let it uncheck for now so can be pulled by other services (slack notif?)
 export async function GET(request, { params }) {
@@ -36,7 +36,7 @@ export async function PATCH(request, { params }) {
       });
 
       if (issue.status === 'resolved') {
-        slack_notification('update', {
+        notification('update', {
           login: user.login,
           host: issue.host,
           device: issue.device,

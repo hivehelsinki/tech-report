@@ -7,17 +7,20 @@
 function send_payload(uri, payload) {
   return fetch(uri, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: payload,
   });
 }
 
 /**
- * Function to send a notification to Slack
+ * Function to send a notification to Discord
  * @param type The type of notification to send
  * @param data The data to send in the notification
  * @returns null
  * @example
- * slack_notification('insert', {
+ * discord_notification('insert', {
  *  login: 'user',
  * host: 'host',
  * device: 'device',
@@ -25,7 +28,7 @@ function send_payload(uri, payload) {
  * });
  *
  * @example
- * slack_notification('update', {
+ * discord_notification('update', {
  *  login: 'user',
  *  host: 'host',
  *  device: 'device',
@@ -33,31 +36,31 @@ function send_payload(uri, payload) {
  *  status: 'status',
  * });
  */
-export function slack_notification(type, data) {
-  const SlackURI = process.env.SLACK_URL;
-  if (!SlackURI) return;
+export function discord_notification(type, data) {
+  const DiscordURI = process.env.DISCORD_URL;
+  if (!DiscordURI) return;
 
   let payload = {};
 
   if (type === 'insert') {
     payload = {
-      attachments: [
+      content: `New report created by ${data.login}`,
+      embeds: [
         {
-          fallback: `New report created by ${data.login}`,
-          color: '#FADE4B',
           title: `${data.device} at ${data.host}`,
-          text: data.description,
+          description: data.description,
+          color: 0xfade4b,
         },
       ],
     };
   } else if (type === 'update') {
     payload = {
-      attachments: [
+      content: `Report updated by ${data.login}`,
+      embeds: [
         {
-          fallback: `Report updated by ${data.login}`,
-          color: '#FADE4B',
           title: `${data.device} at ${data.host}`,
-          text: `Status set to \`${data.status}\`\n\n${data.description}`,
+          description: `Status set to \`${data.status}\`\n\n${data.description}`,
+          color: 0xfade4b,
         },
       ],
     };
@@ -65,5 +68,5 @@ export function slack_notification(type, data) {
     return;
   }
 
-  send_payload(SlackURI, JSON.stringify(payload));
+  send_payload(DiscordURI, JSON.stringify(payload));
 }

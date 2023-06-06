@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/db.js';
 import { getCurrentUser } from '@/lib/session';
-import { slack_notification } from '@/lib/slack';
+import { notification } from '@/lib/notification';
 import fs from 'fs';
 import yaml from 'js-yaml';
 const ymlData = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
@@ -85,7 +85,7 @@ export async function POST(request) {
           },
         },
       });
-      await slack_notification('insert', {
+      await notification('insert', {
         login: user.login,
         host: issue.host,
         device: issue.device,

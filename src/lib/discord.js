@@ -1,3 +1,9 @@
+/**
+ * Function to send a payload to a URI
+ * @param uri The URI to send the payload to
+ * @param payload The payload to send
+ * @returns The response from the URI
+ */
 function send_payload(uri, payload) {
   return fetch(uri, {
     method: 'POST',
@@ -8,6 +14,28 @@ function send_payload(uri, payload) {
   });
 }
 
+/**
+ * Function to send a notification to Discord
+ * @param type The type of notification to send
+ * @param data The data to send in the notification
+ * @returns null
+ * @example
+ * discord_notification('insert', {
+ *  login: 'user',
+ * host: 'host',
+ * device: 'device',
+ * description: 'description',
+ * });
+ *
+ * @example
+ * discord_notification('update', {
+ *  login: 'user',
+ *  host: 'host',
+ *  device: 'device',
+ *  description: 'description',
+ *  status: 'status',
+ * });
+ */
 export function discord_notification(type, data) {
   const DiscordURI = process.env.DISCORD_URL;
   if (!DiscordURI) return;

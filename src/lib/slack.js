@@ -1,3 +1,9 @@
+/**
+ * Function to send a payload to a URI
+ * @param uri The URI to send the payload to
+ * @param payload The payload to send
+ * @returns The response from the URI
+ */
 function send_payload(uri, payload) {
   return fetch(uri, {
     method: 'POST',
@@ -5,6 +11,28 @@ function send_payload(uri, payload) {
   });
 }
 
+/**
+ * Function to send a notification to Slack
+ * @param type The type of notification to send
+ * @param data The data to send in the notification
+ * @returns null
+ * @example
+ * slack_notification('insert', {
+ *  login: 'user',
+ * host: 'host',
+ * device: 'device',
+ * description: 'description',
+ * });
+ *
+ * @example
+ * slack_notification('update', {
+ *  login: 'user',
+ *  host: 'host',
+ *  device: 'device',
+ *  description: 'description',
+ *  status: 'status',
+ * });
+ */
 export function slack_notification(type, data) {
   const SlackURI = process.env.SLACK_URL;
   if (!SlackURI) return;

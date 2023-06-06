@@ -1,4 +1,4 @@
-async function send_payload(uri, payload) {
+function send_payload(uri, payload) {
   return fetch(uri, {
     method: 'POST',
     body: payload,

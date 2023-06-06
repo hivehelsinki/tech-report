@@ -2,8 +2,10 @@ export async function discord_notification(type, data) {
   const DiscordURI = process.env.DISCORD_URL;
   if (!DiscordURI) return;
 
+  let payload = {};
+
   if (type === 'insert') {
-    var payload = {
+    payload = {
       content: `New report created by ${data.login}`,
       embeds: [
         {
@@ -14,7 +16,7 @@ export async function discord_notification(type, data) {
       ],
     };
   } else if (type === 'update') {
-    var payload = {
+    payload = {
       content: `Report updated by ${data.login}`,
       embeds: [
         {
@@ -37,7 +39,7 @@ export async function discord_notification(type, data) {
 }
 
 async function send_payload(uri, payload) {
-  return await fetch(uri, {
+  return fetch(uri, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

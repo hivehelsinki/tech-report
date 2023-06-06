@@ -1,5 +1,5 @@
 async function send_payload(uri, payload) {
-  return await fetch(uri, {
+  return fetch(uri, {
     method: 'POST',
     body: payload,
   });
@@ -9,8 +9,10 @@ export async function slack_notification(type, data) {
   const SlackURI = process.env.SLACK_URL;
   if (!SlackURI) return;
 
+  let payload = {};
+
   if (type === 'insert') {
-    var payload = {
+    payload = {
       attachments: [
         {
           fallback: `New report created by ${data.login}`,
@@ -21,7 +23,7 @@ export async function slack_notification(type, data) {
       ],
     };
   } else if (type === 'update') {
-    var payload = {
+    payload = {
       attachments: [
         {
           fallback: `Report updated by ${data.login}`,

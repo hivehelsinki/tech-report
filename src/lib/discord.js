@@ -8,7 +8,7 @@ function send_payload(uri, payload) {
   });
 }
 
-export async function discord_notification(type, data) {
+export function discord_notification(type, data) {
   const DiscordURI = process.env.DISCORD_URL;
   if (!DiscordURI) return;
 

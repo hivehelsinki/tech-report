@@ -1,3 +1,13 @@
+function send_payload(uri, payload) {
+  return fetch(uri, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: payload,
+  });
+}
+
 export async function discord_notification(type, data) {
   const DiscordURI = process.env.DISCORD_URL;
   if (!DiscordURI) return;
@@ -30,20 +40,5 @@ export async function discord_notification(type, data) {
     return;
   }
 
-  const res = await send_payload(DiscordURI, JSON.stringify(payload));
-
-  return {
-    status: res.status,
-    body: await res.text(),
-  };
-}
-
-async function send_payload(uri, payload) {
-  return fetch(uri, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: payload,
-  });
+  send_payload(DiscordURI, JSON.stringify(payload));
 }

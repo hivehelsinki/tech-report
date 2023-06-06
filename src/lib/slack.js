@@ -37,10 +37,5 @@ export async function slack_notification(type, data) {
     return;
   }
 
-  const res = await send_payload(SlackURI, JSON.stringify(payload));
-
-  return {
-    status: res.status,
-    body: await res.text(),
-  };
+  send_payload(SlackURI, JSON.stringify(payload));
 }

@@ -9,19 +9,21 @@ export default function SignIn() {
   return (
     <div className="flex h-screen flex-col items-center justify-around">
       <div className="flex flex-col items-center justify-between">
-        <div className="pb-4 md:pb-32">
-          <Image
-            src={landingPageLogo}
-            alt="school logo"
-            width={400}
-            height={200}
-          />
-        </div>
-        <div className="flex flex-col items-center gap-2 pb-40 lg:pb-32">
+        <Image
+          src={landingPageLogo}
+          alt="school logo"
+          width={400}
+          height={96}
+        />
+
+        <div className="mt-4 flex flex-col items-center gap-2 text-center md:mt-32">
           <p>Welcome to the Technical Issue Reporting System.</p>
-          <p> Login to report an issue.</p>
+          <p>Login to report an issue.</p>
         </div>
-        <Button onClick={() => signIn('42-school', { callbackUrl: '/' })}>
+        <Button
+          className="mt-40 lg:mt-32"
+          onClick={() => signIn('42-school', { callbackUrl: '/' })}
+        >
           Login
         </Button>
       </div>

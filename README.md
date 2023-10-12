@@ -123,5 +123,4 @@ docker logs -f tech-report
 
 The application stores the following information:
 
-- Student intra id
 - Student login

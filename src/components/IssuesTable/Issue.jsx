@@ -41,8 +41,14 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
     <Accordion.Item value={issue.id} className=" text-hdark">
       <Accordion.Header className="group relative flex w-full items-center justify-between border-b px-5 py-4 dark:border-gray-600">
         <Accordion.Trigger className="group flex w-full items-center justify-between dark:text-gray-300">
-          <div className="inline-flex w-2/5 items-center gap-8">
-            <p className="min-w-[65px]">{issue.host}</p> <p>{issue.device}</p>
+          <div className="inline-flex w-4/5 items-center gap-8">
+            <p className="min-w-[65px] font-semibold">{issue.host}</p>
+            <p>
+              {issue.device}
+              <span className="ml-5 hidden italic opacity-60 md:inline">
+                {issue.description.substring(0, 30)}...
+              </span>
+            </p>
           </div>
           <ChevronDownIcon className="h-5 w-5 transition-transform duration-300 group-data-[state=open]:rotate-180" />
         </Accordion.Trigger>

@@ -12,37 +12,19 @@ export async function GET() {
     return new Response('', { status: 401 });
   } else {
     try {
-      let issues = [];
-      if (user.admin === true) {
-        issues = await prisma.Issue.findMany({
-          orderBy: {
-            id: 'desc',
-          },
-          include: {
-            user: {
-              select: {
-                login: true,
-              },
+      let issues = await prisma.Issue.findMany({
+        orderBy: {
+          id: 'desc',
+        },
+        include: {
+          user: {
+            select: {
+              login: true,
             },
           },
-        });
-      } else {
-        issues = await prisma.Issue.findMany({
-          where: {
-            userId: user.user_id,
-          },
-          orderBy: {
-            id: 'desc',
-          },
-          include: {
-            user: {
-              select: {
-                login: true,
-              },
-            },
-          },
-        });
-      }
+        },
+      });
+
       issues = issues.sort((a, b) => {
         if (a.status === b.status) return 0;
         if (a.status === 'resolved') return -1;

@@ -47,12 +47,16 @@ const IssuesTable = ({ user }) => {
           <Checkbox.Root
             className="flex h-4 w-4 appearance-none items-center justify-center border border-slate-400 bg-white outline-none dark:bg-gray-900"
             onCheckedChange={(event) => setCheckedResolved(event)}
+            id="resolved"
           >
             <Checkbox.Indicator>
               <CheckIcon className="h-5 w-5" />
             </Checkbox.Indicator>
           </Checkbox.Root>
-          <label className="leading-none text-slate-600 dark:text-slate-300">
+          <label
+            className="leading-none text-slate-600 dark:text-slate-300"
+            htmlFor="resolved"
+          >
             Show resolved
           </label>
         </div>
@@ -60,12 +64,16 @@ const IssuesTable = ({ user }) => {
           <Checkbox.Root
             className="flex h-4 w-4 appearance-none items-center justify-center border border-slate-400 bg-white outline-none dark:bg-gray-900"
             onCheckedChange={(event) => setCheckedOnlyMine(event)}
+            id="mine"
           >
             <Checkbox.Indicator>
               <CheckIcon className="h-5 w-5" />
             </Checkbox.Indicator>
           </Checkbox.Root>
-          <label className="leading-none text-slate-600 dark:text-slate-300">
+          <label
+            className="leading-none text-slate-600 dark:text-slate-300"
+            htmlFor="mine"
+          >
             Show only mine
           </label>
         </div>

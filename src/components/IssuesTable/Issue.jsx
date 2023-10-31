@@ -5,7 +5,13 @@ import { ChevronDownIcon } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
 
-const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
+const Issue = ({
+  issue,
+  user,
+  checkedResolved,
+  setTriggerSorting,
+  checkedOnlyMine,
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleStatus = async (event) => {
@@ -35,7 +41,11 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
     }
   };
 
-  if (checkedResolved === false && issue.status === 'resolved') return null;
+  if (
+    (checkedResolved === false && issue.status === 'resolved') ||
+    (checkedOnlyMine === true && issue.userId !== user.user_id)
+  )
+    return null;
 
   return (
     <Accordion.Item value={issue.id} className=" text-hdark">

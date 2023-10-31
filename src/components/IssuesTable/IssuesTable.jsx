@@ -5,7 +5,7 @@ import { CheckIcon } from '@radix-ui/react-icons';
 import { useState, useEffect } from 'react';
 import Issue from './Issue.jsx';
 
-const RenderIssues = ({ user, checkedResolved }) => {
+const RenderIssues = ({ user, checkedResolved, checkedOnlyMine }) => {
   const [issues, setIssues] = useState([]);
   const [triggerSorting, setTriggerSorting] = useState(false);
 
@@ -25,6 +25,7 @@ const RenderIssues = ({ user, checkedResolved }) => {
           issue={issue}
           user={user}
           checkedResolved={checkedResolved}
+          checkedOnlyMine={checkedOnlyMine}
           setTriggerSorting={setTriggerSorting}
           key={issue.id}
         />
@@ -37,6 +38,8 @@ const RenderIssues = ({ user, checkedResolved }) => {
 
 const IssuesTable = ({ user }) => {
   const [checkedResolved, setCheckedResolved] = useState(false);
+  const [checkedOnlyMine, setCheckedOnlyMine] = useState(false);
+
   return (
     <div className="mt-11 w-full md:container">
       <div className="mb-5 flex w-full flex-row justify-end gap-5">
@@ -53,13 +56,30 @@ const IssuesTable = ({ user }) => {
             Show resolved
           </label>
         </div>
+        <div className="flex items-center gap-2">
+          <Checkbox.Root
+            className="flex h-4 w-4 appearance-none items-center justify-center border border-slate-400 bg-white outline-none dark:bg-gray-900"
+            onCheckedChange={(event) => setCheckedOnlyMine(event)}
+          >
+            <Checkbox.Indicator>
+              <CheckIcon className="h-5 w-5" />
+            </Checkbox.Indicator>
+          </Checkbox.Root>
+          <label className="leading-none text-slate-600 dark:text-slate-300">
+            Show only mine
+          </label>
+        </div>
       </div>
       <Accordion.Root
         type="single"
         collapsible
         className="w-full border dark:border-gray-600 "
       >
-        <RenderIssues user={user} checkedResolved={checkedResolved} />
+        <RenderIssues
+          user={user}
+          checkedResolved={checkedResolved}
+          checkedOnlyMine={checkedOnlyMine}
+        />
       </Accordion.Root>
     </div>
   );

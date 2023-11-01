@@ -79,7 +79,7 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
                   className="inline rounded-full"
                 />
               ) : (
-                <div className=" h-[30px] w-[30px] rounded-full bg-teal-300 dark:bg-teal-700"></div>
+                <div className="h-[30px] w-[30px] rounded-full bg-teal-300 dark:bg-teal-700" />
               )}
               <span>{issue.user.login}</span>
             </Link>

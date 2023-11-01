@@ -20,6 +20,7 @@ export async function GET() {
           user: {
             select: {
               login: true,
+              image_url: true,
             },
           },
         },

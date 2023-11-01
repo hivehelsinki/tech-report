@@ -4,6 +4,7 @@ import SelectStatus from './SelectStatus';
 import { ChevronDownIcon } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
   const [open, setOpen] = useState(false);
@@ -36,7 +37,7 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
   };
 
   if (checkedResolved === false && issue.status === 'resolved') return null;
-
+  console.log(issue);
   return (
     <Accordion.Item value={issue.id} className=" text-hdark">
       <Accordion.Header className="group relative flex w-full items-center justify-between border-b px-5 py-4 dark:border-gray-600">
@@ -63,7 +64,32 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
         </div>
       </Accordion.Header>
       <Accordion.Content className="border-b bg-slate-50 px-2 py-6 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
-        <div className="md:pl-20">
+        <div className="px-5 md:pl-20">
+          <div className="mb-5 flex items-center justify-between">
+            <Link
+              href={`https://profile.intra.42.fr/users/${issue.user.login}`}
+              className="inline-flex cursor-pointer gap-2 text-lg hover:underline"
+            >
+              {issue.user.image_url ? (
+                <Image
+                  src={issue.user.image_url}
+                  alt="user image"
+                  width={30}
+                  height={30}
+                  className="inline rounded-full"
+                />
+              ) : (
+                <div className="h-[30px] w-[30px] rounded-full bg-teal-300 dark:bg-teal-700" />
+              )}
+              <span>{issue.user.login}</span>
+            </Link>
+
+            <p className="text-sm">
+              {moment(issue.created).fromNow()}
+              {issue.closed && ` and closed ${moment(issue.closed).fromNow()}`}
+            </p>
+          </div>
+
           <div className="text-md">
             {issue.description.split('\n').map((line, index) => {
               return (
@@ -73,18 +99,6 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
               );
             })}
           </div>
-
-          <p className="mt-5 text-sm">
-            created by{' '}
-            <Link
-              href={`https://profile.intra.42.fr/users/${issue.user.login}`}
-              className="underline"
-            >
-              {issue.user.login}
-            </Link>{' '}
-            {moment(issue.created).fromNow()}
-            {issue.closed && ` and closed ${moment(issue.closed).fromNow()}`}
-          </p>
         </div>
       </Accordion.Content>
     </Accordion.Item>

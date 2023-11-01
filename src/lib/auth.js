@@ -33,11 +33,14 @@ export const authOptions = {
             id: token.user_id,
             login: token.login,
             admin: token.admin,
+            image_url: token.image_url,
           },
           where: {
             id: token.user_id,
           },
-          update: {},
+          update: {
+            image_url: token.image_url,
+          },
         });
       }
       return token;

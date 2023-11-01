@@ -14,6 +14,7 @@ model User {
   id Int @id @unique
   login String @unique
   admin Boolean @default(false)
+  image_url String?
   issues Issue[]
 }
 

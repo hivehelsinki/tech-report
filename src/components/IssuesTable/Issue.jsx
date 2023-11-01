@@ -6,7 +6,13 @@ import moment from 'moment';
 import { useState } from 'react';
 import Image from 'next/image';
 
-const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
+const Issue = ({
+  issue,
+  user,
+  checkedResolved,
+  setTriggerSorting,
+  checkedOnlyMine,
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleStatus = async (event) => {
@@ -36,8 +42,13 @@ const Issue = ({ issue, user, checkedResolved, setTriggerSorting }) => {
     }
   };
 
-  if (checkedResolved === false && issue.status === 'resolved') return null;
-  console.log(issue);
+
+  if (
+    (checkedResolved === false && issue.status === 'resolved') ||
+    (checkedOnlyMine === true && issue.userId !== user.user_id)
+  )
+    return null;
+
   return (
     <Accordion.Item value={issue.id} className=" text-hdark">
       <Accordion.Header className="group relative flex w-full items-center justify-between border-b px-5 py-4 dark:border-gray-600">

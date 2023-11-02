@@ -1,8 +1,9 @@
-import { token } from '@/lib/token';
+import { fetchToken } from '@/lib/token';
 
 export async function GET() {
+  const token = await fetchToken();
   try {
-    const clusters = await fetch(
+    const response = await fetch(
       `https://api.intra.42.fr/v2/clusters?filter[campus_id]=${process.env.CAMPUS_ID}`,
       {
         method: 'GET',
@@ -11,8 +12,8 @@ export async function GET() {
           'Content-Type': 'application/json',
         },
       }
-    ).json();
-    console.log(clusters);
+    );
+    const clusters = await response.json();
     return Response.json({ clusters });
   } catch (error) {
     console.log(error);

@@ -1,24 +1,17 @@
-var globalToken = null;
-
-export const token = globalToken ?? (await getToken());
-
-async function getToken() {
-  const tokenRequest = await fetch('https://api.intra.42.fr/oauth/token', {
+async function fetchToken() {
+  const response = await fetch(`https://api.intra.42.fr/oauth/token`, {
     method: 'POST',
     body: JSON.stringify({
       grant_type: 'client_credentials',
-      client_id: process.env.UID,
-      client_secret: process.env.SECRET,
+      client_id: process.env.FT_UID,
+      client_secret: process.env.FT_SECRET,
     }),
     headers: {
       'Content-Type': 'application/json',
     },
   });
-
-  // if status is 200, return token, else, log error message
-  if (tokenRequest.status === 200) {
-    return await tokenRequest.json();
-  } else {
-    throw new Error('Failed to get token. Error code: ' + tokenRequest.status);
-  }
+  const data = await response.json();
+  return data;
 }
+
+export { fetchToken };

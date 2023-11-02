@@ -19,21 +19,33 @@ const RenderIssues = ({ user, checkedResolved, checkedOnlyMine }) => {
   }, [triggerSorting]);
 
   if (issues.length > 0) {
-    return issues.map((issue) => {
-      return (
-        <Issue
-          issue={issue}
-          user={user}
-          checkedResolved={checkedResolved}
-          checkedOnlyMine={checkedOnlyMine}
-          setTriggerSorting={setTriggerSorting}
-          key={issue.id}
-        />
-      );
-    });
+    return (
+      <Accordion.Root
+        type="single"
+        collapsible
+        className="w-full border dark:border-gray-600 "
+      >
+        {issues.map((issue) => {
+          return (
+            <Issue
+              issue={issue}
+              user={user}
+              checkedResolved={checkedResolved}
+              checkedOnlyMine={checkedOnlyMine}
+              setTriggerSorting={setTriggerSorting}
+              key={issue.id}
+            />
+          );
+        })}
+      </Accordion.Root>
+    );
   }
 
-  return null;
+  return (
+    <div className="w-full pt-7 text-center">
+      <p className="text-lg text-slate-300">No issues to display</p>
+    </div>
+  );
 };
 
 const IssuesTable = ({ user }) => {
@@ -78,17 +90,11 @@ const IssuesTable = ({ user }) => {
           </label>
         </div>
       </div>
-      <Accordion.Root
-        type="single"
-        collapsible
-        className="w-full border dark:border-gray-600 "
-      >
-        <RenderIssues
-          user={user}
-          checkedResolved={checkedResolved}
-          checkedOnlyMine={checkedOnlyMine}
-        />
-      </Accordion.Root>
+      <RenderIssues
+        user={user}
+        checkedResolved={checkedResolved}
+        checkedOnlyMine={checkedOnlyMine}
+      />
     </div>
   );
 };

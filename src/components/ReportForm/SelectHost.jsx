@@ -10,6 +10,7 @@ import {
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 import Label from '@components/Label';
+import ClustersMaps from './ClustersMaps';
 
 // TODO: add logic when pressing enter to select host
 
@@ -17,6 +18,7 @@ const SelectHost = ({ setValue, register, errors }) => {
   const [hostValue, setHostValue] = useState('');
   const [open, setOpen] = useState(false);
   const [hostsList, setHostsList] = useState([]);
+  const [clusters, setClusters] = useState([]);
 
   useEffect(() => {
     const fetchHosts = async () => {
@@ -24,9 +26,16 @@ const SelectHost = ({ setValue, register, errors }) => {
       const data = await res.json();
       return data.hosts;
     };
+    const fetchClusters = async () => {
+      const res = await fetch('/api/hosts/map');
+      const data = await res.json();
+      return data.clusters;
+    };
     const getData = async () => {
-      const data = await fetchHosts();
-      setHostsList(data);
+      const hosts = await fetchHosts();
+      const clustersData = await fetchClusters();
+      setHostsList(hosts);
+      setClusters(clustersData);
     };
     getData();
   }, []);
@@ -52,7 +61,8 @@ const SelectHost = ({ setValue, register, errors }) => {
           {errors.host.message}
         </p>
       )}
-      <div className="mt-4 flex flex-col md:flex-row-reverse md:justify-end md:pl-5">
+      <div className="mt-4 flex flex-col md:flex-row-reverse md:items-center md:justify-end md:gap-6 md:pl-5">
+        <ClustersMaps clusters={clusters} />
         {/* <p className="py-2 md:ml-12">
           Are you connected on{' '}
           <span className="cursor-pointer underline underline-offset-4">

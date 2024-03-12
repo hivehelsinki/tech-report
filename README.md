@@ -124,3 +124,4 @@ docker logs -f tech-report
 The application stores the following information:
 
 - Student login
+- Student profile picture intra url (anonymized when 42 anonymized a user)

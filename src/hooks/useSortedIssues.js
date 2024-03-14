@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 export const useSortedIssues = (issues, sorting) => {
   const [sortedIssues, setSortedIssues] = useState([]);
-  console.log('sorting: ', sorting);
 
   useEffect(() => {
     const sortIssues = (issues) => {

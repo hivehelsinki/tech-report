@@ -27,7 +27,7 @@ const RenderIssues = ({ user, checkedResolved, checkedOnlyMine, sorting }) => {
       <Accordion.Root
         type="single"
         collapsible
-        className="w-full border border-gray-600 dark:border-neutral-700/80"
+        className="w-full border dark:border-gray-600"
       >
         {sortedIssues.map((issue) => {
           return (

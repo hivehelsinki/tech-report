@@ -31,7 +31,8 @@ export const useSortedIssues = (issues, sorting) => {
         }
       });
     };
-    setSortedIssues(sortIssues(issues));
+    const result = sortIssues(issues);
+    setSortedIssues(result);
   }, [sorting, issues]);
 
   return sortedIssues;

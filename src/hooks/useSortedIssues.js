@@ -4,7 +4,7 @@ export const useSortedIssues = (issues, sorting) => {
   const [sortedIssues, setSortedIssues] = useState([]);
 
   useEffect(() => {
-    const sortIssues = (issues) => {
+    const sortIssues = () => {
       return [...issues].sort((a, b) => {
         if (sorting.type === 'Created at') {
           return sorting.order === 'asc'

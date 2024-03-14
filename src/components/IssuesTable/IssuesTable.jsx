@@ -4,8 +4,10 @@ import * as Checkbox from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { useState, useEffect } from 'react';
 import Issue from './Issue.jsx';
+import Header from './Header.jsx';
+import { useSortedIssues } from '@hooks/useSortedIssues.js';
 
-const RenderIssues = ({ user, checkedResolved, checkedOnlyMine }) => {
+const RenderIssues = ({ user, checkedResolved, checkedOnlyMine, sorting }) => {
   const [issues, setIssues] = useState([]);
   const [triggerSorting, setTriggerSorting] = useState(false);
 
@@ -18,14 +20,16 @@ const RenderIssues = ({ user, checkedResolved, checkedOnlyMine }) => {
     fetchInfo();
   }, [triggerSorting]);
 
-  if (issues.length > 0) {
+  const sortedIssues = useSortedIssues(issues, sorting);
+
+  if (sortedIssues.length > 0) {
     return (
       <Accordion.Root
         type="single"
         collapsible
-        className="w-full border dark:border-gray-600 "
+        className="w-full border dark:border-gray-600"
       >
-        {issues.map((issue) => {
+        {sortedIssues.map((issue) => {
           return (
             <Issue
               issue={issue}
@@ -51,6 +55,7 @@ const RenderIssues = ({ user, checkedResolved, checkedOnlyMine }) => {
 const IssuesTable = ({ user }) => {
   const [checkedResolved, setCheckedResolved] = useState(false);
   const [checkedOnlyMine, setCheckedOnlyMine] = useState(false);
+  const [sorting, setSorting] = useState({ type: 'Created at', order: 'desc' });
 
   return (
     <div className="mt-11 w-full md:container">
@@ -90,10 +95,12 @@ const IssuesTable = ({ user }) => {
           </label>
         </div>
       </div>
+      <Header sorting={sorting} setSorting={setSorting} />
       <RenderIssues
         user={user}
         checkedResolved={checkedResolved}
         checkedOnlyMine={checkedOnlyMine}
+        sorting={sorting}
       />
     </div>
   );

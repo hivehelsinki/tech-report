@@ -42,7 +42,6 @@ const Issue = ({
     }
   };
 
-
   if (
     (checkedResolved === false && issue.status === 'resolved') ||
     (checkedOnlyMine === true && issue.userId !== user.user_id)

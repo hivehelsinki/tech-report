@@ -15,6 +15,14 @@ const Header = ({ sorting, setSorting }) => {
       order: order(type),
     });
   };
+  const handleKeyUp = (event, type) => {
+    if (event.key === 'Enter') {
+      setSorting({
+        type,
+        order: order(type),
+      });
+    }
+  };
 
   const sortingOptions = ['Host', 'Device', 'Status', 'User', 'Created at'].map(
     (type) => {
@@ -25,6 +33,8 @@ const Header = ({ sorting, setSorting }) => {
           }`}
           key={type}
           onClick={(event) => handleClick(event, type)}
+          onKeyUp={(event) => handleKeyUp(event, type)}
+          tabIndex={0}
           role="button"
         >
           <ArrowUpIcon

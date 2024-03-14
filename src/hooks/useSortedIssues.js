@@ -26,6 +26,8 @@ export const useSortedIssues = (issues, sorting) => {
           return sorting.order === 'asc'
             ? a.user.login.localeCompare(b.user.login)
             : b.user.login.localeCompare(a.user.login);
+        } else {
+          return 0;
         }
       });
     };

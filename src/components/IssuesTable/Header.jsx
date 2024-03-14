@@ -1,16 +1,18 @@
 import { ArrowUpIcon } from '@radix-ui/react-icons';
 
 const Header = ({ sorting, setSorting }) => {
-  const handleClick = (event, type) => {
-    let order;
+  const order = (type) => {
     if (sorting.type === type) {
-      order = sorting.order === 'asc' ? 'desc' : 'asc';
+      return sorting.order === 'asc' ? 'desc' : 'asc';
     } else {
-      order = 'asc';
+      return 'asc';
     }
+  };
+
+  const handleClick = (event, type) => {
     setSorting({
       type,
-      order,
+      order: order(type),
     });
   };
 

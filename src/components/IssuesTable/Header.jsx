@@ -14,7 +14,7 @@ const Header = ({ sorting, setSorting }) => {
     });
   };
 
-  const sortings = ['Host', 'Device', 'Status', 'User', 'Created at'].map(
+  const sortingOptions = ['Host', 'Device', 'Status', 'User', 'Created at'].map(
     (type) => {
       return (
         <div
@@ -38,7 +38,7 @@ const Header = ({ sorting, setSorting }) => {
 
   return (
     <div className="flex items-center justify-between py-4 pl-9 pr-12">
-      {sortings}
+      {sortingOptions}
     </div>
   );
 };
